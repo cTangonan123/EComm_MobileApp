@@ -12,25 +12,19 @@
         - finish watching recyclerView tutorial
     -->
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-    />
+
 
     <ActionMenuView
+        android:id="@+id/main_header"
+        android:background="@android:color/holo_blue_light"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         app:layout_constraintTop_toTopOf="parent"
         android:outlineAmbientShadowColor="@color/material_dynamic_primary80"
         android:paddingStart="3dp"
-        android:paddingEnd="3dp"
-    >
+        android:paddingEnd="3dp">
         <TextView
+            android:id="@+id/main_header_title"
             android:layout_width="60dp"
             android:layout_height="fill_parent"
             android:text="Store Name"
@@ -38,6 +32,7 @@
             android:textAlignment="textStart"
         />
         <Button
+            android:id="@+id/main_header_logout_button"
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:text="Logout"
@@ -45,18 +40,19 @@
         /> <!--this is a comment-->
     </ActionMenuView>
 
+
+
     <!-- is the RecyclerView Class,
         - will be updated with seperate view items with onClick listeners
     -->
-    <view class="androidx.appcompat.app.AlertController$RecycleListView"
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/main_recyclerview_items"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="100dp"
-    >
+        tools:listitem="@layout/main_recyclerview_items"/>
 
-    </view>
 
     <LinearLayout
         android:layout_width="match_parent"
