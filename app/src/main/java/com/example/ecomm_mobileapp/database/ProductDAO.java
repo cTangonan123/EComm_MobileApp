@@ -22,8 +22,8 @@ public interface ProductDAO {
     @Query("DELETE FROM " + ShopDatabase.PRODUCT_TABLE)
     void deleteAll();
 
-    @Query("SELECT * FROM " + ShopDatabase.PRODUCT_TABLE + " WHERE id = :productId")
-    LiveData<Product> getProductByProductId(int productId);
+//    @Query("SELECT * FROM " + ShopDatabase.PRODUCT_TABLE + " WHERE id = :productId")
+//    LiveData<Product> getProductByProductId(int productId);
 
     @Query("SELECT * FROM " + ShopDatabase.PRODUCT_TABLE)
     LiveData<List<Product>> getAllProducts();

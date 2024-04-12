@@ -68,6 +68,13 @@ public class ShopRepository {
     }
 
 
+    public LiveData<List<Product>> getAllProducts() {
+        return this.allProducts;
+    }
 
-
+    public void insertProduct(Product... product) {
+        ShopDatabase.databaseWriteExecutor.execute(() -> {
+            productDAO.insert(product);
+        });
+    }
 }

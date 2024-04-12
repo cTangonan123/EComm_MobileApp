@@ -6,9 +6,11 @@ import android.media.Image;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.example.ecomm_mobileapp.database.ShopDatabase;
+
 import java.util.Objects;
 
-@Entity(tableName = "producttable")
+@Entity(tableName = ShopDatabase.PRODUCT_TABLE)
 public class Product {
     @PrimaryKey(autoGenerate = true)
     private int id;
@@ -25,6 +27,16 @@ public class Product {
         this.productName = productName;
         this.productDescription = productDescription;
         this.productPrice = productPrice;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", productName='" + productName + '\'' +
+                ", productDescription='" + productDescription + '\'' +
+                ", productPrice=" + productPrice +
+                '}';
     }
 
     public int getId() {

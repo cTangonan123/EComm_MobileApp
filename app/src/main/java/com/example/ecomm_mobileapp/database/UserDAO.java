@@ -22,11 +22,11 @@ public interface UserDAO {
     @Query("DELETE FROM " + ShopDatabase.USER_TABLE)
     void deleteAll();
 
-    @Query("SELECT * FROM " + ShopDatabase.USER_TABLE + " WHERE id = :userId")
-    LiveData<User> getUserByUserId(int userId);
+//    @Query("SELECT * FROM " + ShopDatabase.USER_TABLE + " WHERE id = :userId")
+//    LiveData<User> getUserByUserId(int userId);
 
-    @Query("SELECT * FROM " + ShopDatabase.USER_TABLE + " WHERE userName = :userName")
-    LiveData<User> getUserByUserName(int userName);
+//    @Query("SELECT * FROM " + ShopDatabase.USER_TABLE + " WHERE userName = :userName")
+//    LiveData<User> getUserByUserName(int userName);
 
     @Query("SELECT * FROM " + ShopDatabase.USER_TABLE)
     LiveData<List<User>> getAllUsers();

@@ -10,8 +10,9 @@
         android:id="@+id/main_recyclerview_product_img"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginRight="6dp"/>
-<!--        android:src=""-->
+        android:layout_marginRight="6dp"
+        android:src="@mipmap/ic_launcher"
+        />
 
     <LinearLayout
         android:layout_width="wrap_content"

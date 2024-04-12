@@ -22,9 +22,12 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 //TODO: as entities are added to the App, add them to entities parameter below
-@Database(entities = {User.class, Product.class}, version = 2, exportSchema = false)
+@Database(entities = {User.class, Product.class}, version = 1, exportSchema = false)
 public abstract class ShopDatabase extends RoomDatabase {
 
+    public abstract UserDAO userDAO();
+
+    public abstract ProductDAO productDAO();
     public static final String USER_TABLE = "usertable";
     public static final String PRODUCT_TABLE = "producttable";
     public static final String DATABASE_NAME = "shopdatabase";
@@ -58,28 +61,27 @@ public abstract class ShopDatabase extends RoomDatabase {
             // TODO: add items, shoppingcarts etc to this method
             databaseWriteExecutor.execute(() -> {
                 UserDAO userDAO = INSTANCE.userDAO();
-                ProductDAO productDAO = INSTANCE.productDAO();
 
                 userDAO.deleteAll();
-                productDAO.deleteAll();
 
                 User admin = new User("admin1", "admin1", true);
-                User testUser1 = new User("testUser1", "testUser1", false);
                 userDAO.insert(admin);
+                User testUser1 = new User("testUser1", "testUser1", false);
                 userDAO.insert(testUser1);
 
+                ProductDAO productDAO = INSTANCE.productDAO();
+
+                productDAO.deleteAll();
+
                 Product product1 = new Product("Tv", "description of Tv", 2.99);
-                Product product2 = new Product("Microwave", "description of microwave", 1.99);
                 productDAO.insert(product1);
+                Product product2 = new Product("Microwave", "description of microwave", 1.99);
                 productDAO.insert(product2);
 
             });
         }
     };
 
-    public abstract UserDAO userDAO();
-
-    public abstract ProductDAO productDAO();
 
 
 }

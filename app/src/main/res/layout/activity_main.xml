@@ -48,13 +48,13 @@
     <!-- is the RecyclerView Class,
         - will be updated with seperate view items with onClick listeners
     -->
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:id="@+id/main_recyclerview_items"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_marginTop="50dp"-->
-<!--        android:layout_marginBottom="100dp"-->
-<!--        tools:listitem="@layout/main_recyclerview_items"/>-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/main_recyclerview_items"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="100dp"
+        tools:listitem="@layout/main_recyclerview_items"/>
 
 
     <LinearLayout

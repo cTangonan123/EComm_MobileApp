@@ -6,28 +6,22 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+import com.example.ecomm_mobileapp.database.ShopDatabase;
+
 import java.util.Objects;
 
-@Entity(tableName = "usertable")
+@Entity(tableName = ShopDatabase.USER_TABLE)
 public class User {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-
-
     private String userName;
-
 
     private String password;
 
-
-
     private boolean isAdmin;
 
-
-
     private String firstName;
-
 
     private String lastName;
 
@@ -47,6 +41,17 @@ public class User {
         this.lastName = "lName";
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", isAdmin=" + isAdmin +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
+    }
 
     // Getters and Setters
 
