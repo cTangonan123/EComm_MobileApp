@@ -48,13 +48,13 @@
     <!-- is the RecyclerView Class,
         - will be updated with seperate view items with onClick listeners
     -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/main_recyclerview_items"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="100dp"
-        tools:listitem="@layout/main_recyclerview_items"/>
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/main_recyclerview_items"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_marginTop="50dp"-->
+<!--        android:layout_marginBottom="100dp"-->
+<!--        tools:listitem="@layout/main_recyclerview_items"/>-->
 
 
     <LinearLayout
@@ -65,6 +65,7 @@
         android:paddingEnd="6dp"
         android:gravity="center">
         <Button
+            android:id="@+id/main_button_viewusers"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:text="View Users"
@@ -74,6 +75,7 @@
             android:visibility="gone"
         />
         <Button
+            android:id="@+id/main_button_viewitems"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:text="View Items"
@@ -83,6 +85,7 @@
             android:visibility="gone"
         />
         <Button
+            android:id="@+id/main_button_viewcart"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:text="View Cart"

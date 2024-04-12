@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_recyclerview"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="6dp">
 
-    <ImageButton
-        android:id="@+id/main_recyclerview_items_img"
+    <ImageView
+        android:id="@+id/main_recyclerview_product_img"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:src="@mipmap/ic_launcher"
         android:layout_marginRight="6dp"/>
+<!--        android:src=""-->
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -18,19 +19,19 @@
         android:orientation="vertical">
 
             <TextView
-            android:id="@+id/main_recyclerview_items_title"
+            android:id="@+id/main_recyclerview_product_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Title of Item"
+            android:text="Name of item"
             android:textSize="20dp"
             android:layout_marginEnd="0dp"
             />
 
         <TextView
-            android:id="@+id/main_recyclerview_items_price"
+            android:id="@+id/main_recyclerview_product_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Price"
+            android:text="Price of Item"
             android:textSize="16dp"
             android:layout_marginEnd="0dp"
             />

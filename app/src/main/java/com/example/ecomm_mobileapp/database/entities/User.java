@@ -1,26 +1,34 @@
 package com.example.ecomm_mobileapp.database.entities;
 
 import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "user_table")
+import java.util.Objects;
+
+@Entity(tableName = "usertable")
 public class User {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    @NonNull
+
+
     private String userName;
-    @NonNull
+
+
     private String password;
 
-    @NonNull
+
+
     private boolean isAdmin;
 
-    @NonNull
+
+
     private String firstName;
-    @NonNull
+
+
     private String lastName;
 
     // TODO: Look up implementing a foreign key
@@ -30,10 +38,13 @@ public class User {
 
     // Constructor
 
-    public User(@NonNull String userName, @NonNull String password, boolean isAdmin) {
+    public User( String userName, String password, boolean isAdmin) {
         this.userName = userName;
         this.password = password;
         this.isAdmin = isAdmin;
+        // TODO: add firstname and last name constructor as well
+        this.firstName = "fName"; // these are place holders, will add later
+        this.lastName = "lName";
     }
 
 
@@ -48,21 +59,21 @@ public class User {
         this.id = id;
     }
 
-    @NonNull
+
     public String getUserName() {
         return userName;
     }
 
-    public void setUserName(@NonNull String userName) {
+    public void setUserName( String userName) {
         this.userName = userName;
     }
 
-    @NonNull
+
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(@NonNull String password) {
+    public void setPassword( String password) {
         this.password = password;
     }
 
@@ -74,21 +85,35 @@ public class User {
         isAdmin = admin;
     }
 
-    @NonNull
+
     public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(@NonNull String firstName) {
+    public void setFirstName( String firstName) {
         this.firstName = firstName;
     }
 
-    @NonNull
+
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(@NonNull String lastName) {
+    public void setLastName( String lastName) {
         this.lastName = lastName;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id == user.id && isAdmin == user.isAdmin && Objects.equals(userName, user.userName) && Objects.equals(password, user.password) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, userName, password, isAdmin, firstName, lastName);
     }
 }

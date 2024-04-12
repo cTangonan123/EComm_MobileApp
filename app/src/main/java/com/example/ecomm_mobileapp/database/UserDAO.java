@@ -19,14 +19,17 @@ public interface UserDAO {
     @Delete
     void delete(User user);
 
-    @Query("DELETE FROM user_table")
+    @Query("DELETE FROM " + ShopDatabase.USER_TABLE)
     void deleteAll();
 
-    @Query("SELECT * FROM user_table WHERE id = :userId")
+    @Query("SELECT * FROM " + ShopDatabase.USER_TABLE + " WHERE id = :userId")
     LiveData<User> getUserByUserId(int userId);
 
-    @Query("SELECT * FROM user_table WHERE userName = :userName")
+    @Query("SELECT * FROM " + ShopDatabase.USER_TABLE + " WHERE userName = :userName")
     LiveData<User> getUserByUserName(int userName);
+
+    @Query("SELECT * FROM " + ShopDatabase.USER_TABLE)
+    LiveData<List<User>> getAllUsers();
 
     //TODO: add more queries as the app is built
 
