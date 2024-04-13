@@ -6,22 +6,24 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.ecomm_mobileapp.database.ShopRepository;
-import com.example.ecomm_mobileapp.database.entities.User;
+import com.example.ecomm_mobileapp.database.entities.Product;
 
 import java.util.List;
 
 public class ShopViewModel extends AndroidViewModel {
-
-    private ShopRepository shopRepository;
-    private LiveData<List<User>> allUsers;
+    private ShopRepository repository;
 
     public ShopViewModel (Application application) {
         super(application);
-        shopRepository = new ShopRepository(application);
-   //    allUsers = shopRepository.getUserName();
+        repository = ShopRepository.getRepository(application);
     }
 
-    LiveData<List<User>> getAllWords() { return allUsers; }
+    public LiveData<List<Product>> getAllProducts() {
+        return repository.getAllProducts();
+    }
 
-    public void insert(User user) { shopRepository.insert(user); }
+    public void insertProduct(Product product) {repository.insertProduct(product);}
+
+
+
 }

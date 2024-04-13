@@ -1,71 +1,89 @@
 package com.example.ecomm_mobileapp.database.entities;
 
-import androidx.annotation.NonNull;
 
-@Entity(tableName = "product_table")
+import android.media.Image;
+
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+import com.example.ecomm_mobileapp.database.ShopDatabase;
+
+import java.util.Objects;
+
+@Entity(tableName = ShopDatabase.PRODUCT_TABLE)
 public class Product {
-
     @PrimaryKey(autoGenerate = true)
-    private int productID;
+    private int id;
 
-    @NonNull
     private String productName;
-    @NonNull
     private String productDescription;
+//    private Image productImage;
+    private double productPrice;
 
-    @NonNull
-    private String productImage;
-    @NonNull
-    private double price;
+    // Constructor
 
-    //Constructor
-    public Product(@NonNull String productName, @NonNull String productDescription, @NonNull String productImage, double price) {
+
+    public Product(String productName, String productDescription, double productPrice) {
         this.productName = productName;
         this.productDescription = productDescription;
-        this.productImage = productImage;
-        this.price = price;
+        this.productPrice = productPrice;
     }
 
-    public int getProductID() {
-        return productID;
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", productName='" + productName + '\'' +
+                ", productDescription='" + productDescription + '\'' +
+                ", productPrice=" + productPrice +
+                '}';
     }
 
-    public void setProductID(int productID) {
-        this.productID = productID;
+    public int getId() {
+        return id;
     }
 
-    @NonNull
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getProductName() {
         return productName;
     }
 
-    public void setProductName(@NonNull String productName) {
+    public void setProductName(String productName) {
         this.productName = productName;
     }
 
-    @NonNull
     public String getProductDescription() {
         return productDescription;
     }
 
-    public void setProductDescription(@NonNull String productDescription) {
+    public void setProductDescription(String productDescription) {
         this.productDescription = productDescription;
     }
 
-    @NonNull
-    public String getProductImage() {
-        return productImage;
+
+
+    public double getProductPrice() {
+        return productPrice;
     }
 
-    public void setProductImage(@NonNull String productImage) {
-        this.productImage = productImage;
+    public void setProductPrice(double productPrice) {
+        this.productPrice = productPrice;
     }
 
-    public double getPrice() {
-        return price;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return id == product.id && Double.compare(product.productPrice, productPrice) == 0 && Objects.equals(productName, product.productName) && Objects.equals(productDescription, product.productDescription);
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, productName, productDescription, productPrice);
     }
 }
