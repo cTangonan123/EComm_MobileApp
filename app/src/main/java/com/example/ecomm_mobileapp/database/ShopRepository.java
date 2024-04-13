@@ -7,6 +7,9 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 
 import com.example.ecomm_mobileapp.MainActivity;
+import com.example.ecomm_mobileapp.database.entities.Cart;
+import com.example.ecomm_mobileapp.database.entities.Order;
+import com.example.ecomm_mobileapp.database.entities.Payment;
 import com.example.ecomm_mobileapp.database.entities.Product;
 import com.example.ecomm_mobileapp.database.entities.User;
 
@@ -19,8 +22,14 @@ import java.util.concurrent.Future;
 public class ShopRepository {
     private final UserDAO userDAO;
     private final ProductDAO productDAO;
-    private LiveData<List<User>> allUsers;
-    private LiveData<List<Product>> allProducts;
+    private final CartDAO cartDAO;
+    private final OrderDAO orderDAO;
+    private final PaymentDAO paymentDAO;
+    private final LiveData<List<User>> allUsers;
+    private final LiveData<List<Product>> allProducts;
+    private final LiveData<List<Cart>> allCarts;
+    private final LiveData<List<Order>> allOrders;
+    private final LiveData<List<Payment>> allPayments;
 
     private static ShopRepository repository;
 
@@ -28,8 +37,15 @@ public class ShopRepository {
         ShopDatabase db = ShopDatabase.getDatabase(application);
         this.userDAO = db.userDAO();
         this.productDAO = db.productDAO();
+        this.cartDAO = db.cartDAO();
+        this.orderDAO = db.orderDAO();
+        this.paymentDAO = db.paymentDAO();
         this.allUsers = userDAO.getAllUsers();
         this.allProducts = productDAO.getAllProducts();
+        this.allCarts = cartDAO.getAllCart();
+        this.allOrders = orderDAO.getAllOrders();
+        this.allPayments = paymentDAO.getAllPayments();
+
 
 
     }
@@ -75,6 +91,36 @@ public class ShopRepository {
     public void insertProduct(Product... product) {
         ShopDatabase.databaseWriteExecutor.execute(() -> {
             productDAO.insert(product);
+        });
+    }
+
+    public LiveData<List<Cart>> getAllCarts() {
+        return this.allCarts;
+    }
+
+    public void insertUser(Cart... cart) {
+        ShopDatabase.databaseWriteExecutor.execute(() -> {
+            cartDAO.insert(cart);
+        });
+    }
+
+    public LiveData<List<Order>> getAllOrders() {
+        return this.allOrders;
+    }
+
+    public void insertUser(Order... order) {
+        ShopDatabase.databaseWriteExecutor.execute(() -> {
+            orderDAO.insert(order);
+        });
+    }
+
+    public LiveData<List<Payment>> getAllPayments() {
+        return this.allPayments;
+    }
+
+    public void insertUser(Payment... payment) {
+        ShopDatabase.databaseWriteExecutor.execute(() -> {
+            paymentDAO.insert(payment);
         });
     }
 }

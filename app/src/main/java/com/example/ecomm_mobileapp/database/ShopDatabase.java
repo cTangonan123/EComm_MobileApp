@@ -10,10 +10,14 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.RoomDatabase.Callback;
+import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.ecomm_mobileapp.MainActivity;
 import com.example.ecomm_mobileapp.R;
+import com.example.ecomm_mobileapp.database.entities.Cart;
+import com.example.ecomm_mobileapp.database.entities.Order;
+import com.example.ecomm_mobileapp.database.entities.Payment;
 import com.example.ecomm_mobileapp.database.entities.Product;
 import com.example.ecomm_mobileapp.database.entities.User;
 
@@ -22,14 +26,19 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 //TODO: as entities are added to the App, add them to entities parameter below
-@Database(entities = {User.class, Product.class}, version = 1, exportSchema = false)
+@Database(entities = {User.class, Product.class, Cart.class, Order.class, Payment.class}, version = 1, exportSchema = false)
 public abstract class ShopDatabase extends RoomDatabase {
 
     public abstract UserDAO userDAO();
-
+    public abstract CartDAO cartDAO();
+    public abstract OrderDAO orderDAO();
+    public abstract PaymentDAO paymentDAO();
     public abstract ProductDAO productDAO();
     public static final String USER_TABLE = "usertable";
     public static final String PRODUCT_TABLE = "producttable";
+    public static final String CART_TABLE = "carttable";
+    public static final String ORDER_TABLE = "ordertable";
+    public static final String PAYMENT_TABLE = "paymenttable";
     public static final String DATABASE_NAME = "shopdatabase";
     private static volatile ShopDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
