@@ -31,6 +31,9 @@ public interface UserDAO {
     @Query("SELECT * FROM " + ShopDatabase.USER_TABLE)
     LiveData<List<User>> getAllUsers();
 
+    @Query("SELECT * FROM " + ShopDatabase.USER_TABLE + " WHERE userName = :userName")
+    LiveData<User> getUserByUserName(String userName);
+
     //TODO: add more queries as the app is built
 
 }

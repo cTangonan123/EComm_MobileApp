@@ -13,7 +13,6 @@ import com.example.ecomm_mobileapp.database.entities.Order;
 import java.util.List;
 
 @Dao
-
 public interface OrderDAO {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Order... orders);

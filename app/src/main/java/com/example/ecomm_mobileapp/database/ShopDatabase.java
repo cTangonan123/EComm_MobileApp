@@ -87,6 +87,27 @@ public abstract class ShopDatabase extends RoomDatabase {
                 Product product2 = new Product("Microwave", "description of microwave", 1.99);
                 productDAO.insert(product2);
 
+
+// this is not working...perhaps alter POJO or DAO associated with entity declaration
+                CartDAO cartDAO = INSTANCE.cartDAO();
+
+                cartDAO.deleteAll();
+
+                Cart cart1 = new Cart(1,1,product1.getProductPrice(),2);
+                Cart cart2 = new Cart(1,2,product2.getProductPrice(),1);
+
+
+                cartDAO.insert(cart1);
+                cartDAO.insert(cart2);
+
+                OrderDAO orderDAO = INSTANCE.orderDAO();
+                orderDAO.deleteAll();
+
+
+
+
+
+
             });
         }
     };

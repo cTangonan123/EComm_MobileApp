@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(R.layout.activity_main);
+        setContentView(binding.getRoot());
         Log.i(MainActivity.TAG, "Hello World");
 
         repository = ShopRepository.getRepository(getApplication());
@@ -56,17 +56,16 @@ public class MainActivity extends AppCompatActivity {
         // TODO: finish adding holder, adapter, and ... for our Shop Class
         // TODO: Learn how to implement multiple Recycler Views.
 
-        // TODO: create class and intent factory for layout Login
+        // TODO: create class and intent factory for loginActivity
         Button btnLogout = (Button)findViewById(R.id.main_header_logout_button);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Toast.makeText(MainActivity.this, "You clicked the Logout button", Toast.LENGTH_SHORT).show();
             }
         });
 
-        // TODO: create class and intent factory for layout ViewCart
+        // TODO: create class and intent factory for viewCartActivity
         Button btnViewCart = (Button)findViewById(R.id.main_button_viewcart);
         btnViewCart.setOnClickListener(new View.OnClickListener() {
             @Override

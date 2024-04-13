@@ -9,13 +9,13 @@ import com.example.ecomm_mobileapp.database.ShopDatabase;
 
 import java.util.Objects;
 
-@Entity(tableName = ShopDatabase.ORDER_TABLE,
-        foreignKeys = @ForeignKey(entity = Cart.class,
-                parentColumns = "id",
-                childColumns = "cartId",
-                onDelete = ForeignKey.CASCADE),
-        indices = {@Index("cartId")})
-
+//@Entity(tableName = ShopDatabase.ORDER_TABLE,
+//        foreignKeys = @ForeignKey(entity = Cart.class,
+//                parentColumns = "id",
+//                childColumns = "cartId",
+//                onDelete = ForeignKey.CASCADE),
+//        indices = {@Index("cartId")})
+@Entity(tableName = ShopDatabase.ORDER_TABLE)
 public class Order {
     @PrimaryKey(autoGenerate = true)
     private int id;
