@@ -30,8 +30,6 @@ public class ShopRepository {
         this.productDAO = db.productDAO();
         this.allUsers = userDAO.getAllUsers();
         this.allProducts = productDAO.getAllProducts();
-
-
     }
 
 
