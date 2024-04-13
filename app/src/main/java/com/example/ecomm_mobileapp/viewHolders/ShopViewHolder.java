@@ -18,7 +18,9 @@ public class ShopViewHolder extends RecyclerView.ViewHolder {
         productViewItem = itemView.findViewById(R.id.main_recyclerview_product_name);
     }
 
-    public void bind (String text) {productViewItem.setText(text);}
+    public void bind (String text) {
+        productViewItem.setText(text);
+    }
 
     static ShopViewHolder create(ViewGroup parent) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.main_recyclerview_items, parent, false);
