@@ -9,19 +9,19 @@ import com.example.ecomm_mobileapp.database.ShopDatabase;
 
 import java.util.Objects;
 
-@Entity(tableName = ShopDatabase.CART_TABLE,
-        foreignKeys = {
-                @ForeignKey(entity = User.class,
-                        parentColumns = "id",
-                        childColumns = "userId",
-                        onDelete = ForeignKey.CASCADE),
-                @ForeignKey(entity = Product.class,
-                        parentColumns = "id",
-                        childColumns = "productId",
-                        onDelete = ForeignKey.CASCADE)
-        },
-        indices = {@Index("userId"), @Index("productId")})
-
+//@Entity(tableName = ShopDatabase.CART_TABLE,
+//        foreignKeys = {
+//                @ForeignKey(entity = User.class,
+//                        parentColumns = "id",
+//                        childColumns = "userId",
+//                        onDelete = ForeignKey.CASCADE),
+//                @ForeignKey(entity = Product.class,
+//                        parentColumns = "id",
+//                        childColumns = "productId",
+//                        onDelete = ForeignKey.CASCADE)
+//        },
+//        indices = {@Index("userId"), @Index("productId")})
+@Entity(tableName = ShopDatabase.CART_TABLE)
 public class Cart {
 
     @PrimaryKey(autoGenerate = true)
@@ -31,8 +31,15 @@ public class Cart {
     private double cartPrice;
     private int cartQuantity;
 
-    public Cart(double cartPrice, int cartQuantity) {
-        this.cartPrice = cartPrice;
+//    public Cart(double cartPrice, int cartQuantity) {
+//        this.cartPrice = cartPrice * cartQuantity;
+//        this.cartQuantity = cartQuantity;
+//    }
+
+    public Cart(int userId, int productId, double cartPrice, int cartQuantity) {
+        this.userId = userId;
+        this.productId = productId;
+        this.cartPrice = cartPrice*cartQuantity;
         this.cartQuantity = cartQuantity;
     }
 

@@ -25,6 +25,7 @@
             android:layout_height="wrap_content"
             android:text="Name of item"
             android:textSize="20dp"
+            android:textColor="@color/color_secondary"
             android:layout_marginEnd="0dp"
             />
 
@@ -36,6 +37,8 @@
             android:textSize="16dp"
             android:layout_marginEnd="0dp"
             />
+
+
 
     </LinearLayout>
 

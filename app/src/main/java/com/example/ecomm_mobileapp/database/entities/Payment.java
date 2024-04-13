@@ -10,13 +10,13 @@ import com.example.ecomm_mobileapp.database.ShopDatabase;
 
 import java.util.Objects;
 
-@Entity(tableName = ShopDatabase.PAYMENT_TABLE,
-        foreignKeys = @ForeignKey(entity = User.class,
-                parentColumns = "id",
-                childColumns = "userId",
-                onDelete = ForeignKey.CASCADE),
-        indices = {@Index("userId")})
-
+//@Entity(tableName = ShopDatabase.PAYMENT_TABLE,
+//        foreignKeys = @ForeignKey(entity = User.class,
+//                parentColumns = "id",
+//                childColumns = "userId",
+//                onDelete = ForeignKey.CASCADE),
+//        indices = {@Index("userId")})
+@Entity(tableName = ShopDatabase.PAYMENT_TABLE)
 public class Payment {
     @PrimaryKey(autoGenerate = true)
     private int id;
