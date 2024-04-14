@@ -24,7 +24,7 @@ public class ShopAdapter extends ListAdapter<Product, ShopViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ShopViewHolder holder, int position) {
         Product current = getItem(position);
-        holder.bind(current.getProductName());
+        holder.bind(current);
     }
 
     public static class ShopDiff extends DiffUtil.ItemCallback<Product> {

@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,6 +25,7 @@ import com.example.ecomm_mobileapp.viewHolders.ShopViewModel;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String MAIN_ACTIVITY_USER_ID = "com.example.ecomm_mobileapp.MAIN_ACTIVITY_USER_ID";
     private ActivityMainBinding binding;
     private ShopRepository repository;
 
@@ -71,12 +74,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, "You clicked the ViewCart button", Toast.LENGTH_LONG).show();
+                startActivity(ViewCartActivity.viewCartActivityIntentFactory(getApplicationContext()));
             }
         });
 
 
 
 
+    }
+
+    static Intent mainActivityIntentFactory(Context context, int userId) {
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.putExtra(MAIN_ACTIVITY_USER_ID, userId);
+        return intent;
     }
 
 
