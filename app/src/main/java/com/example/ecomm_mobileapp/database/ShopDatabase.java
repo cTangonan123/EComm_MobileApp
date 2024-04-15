@@ -2,26 +2,20 @@ package com.example.ecomm_mobileapp.database;
 
 import android.content.Context;
 import android.util.Log;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.LiveData;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.room.RoomDatabase.Callback;
-import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.ecomm_mobileapp.MainActivity;
-import com.example.ecomm_mobileapp.R;
 import com.example.ecomm_mobileapp.database.entities.Cart;
 import com.example.ecomm_mobileapp.database.entities.Order;
 import com.example.ecomm_mobileapp.database.entities.Payment;
 import com.example.ecomm_mobileapp.database.entities.Product;
 import com.example.ecomm_mobileapp.database.entities.User;
 
-import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -44,7 +38,7 @@ public abstract class ShopDatabase extends RoomDatabase {
     private static final int NUMBER_OF_THREADS = 4;
     static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
-    static ShopDatabase getDatabase(final Context context) {
+    public static ShopDatabase getDatabase(Context context) {
         if (INSTANCE == null) {
             synchronized (ShopDatabase.class) {
                 if (INSTANCE == null) {
@@ -73,10 +67,15 @@ public abstract class ShopDatabase extends RoomDatabase {
 
                 userDAO.deleteAll();
 
-                User admin = new User("admin1", "admin1", true);
+                User admin = new User("admin1", "admin1", true, "Admin", "AdminLastName");
                 userDAO.insert(admin);
-                User testUser1 = new User("testUser1", "testUser1", false);
+                User testUser1 = new User("testUser1", "testUser1", false, "User", "UserLastName");
                 userDAO.insert(testUser1);
+
+                //User admin = new User("admin1", "admin1", true);
+                //userDAO.insert(admin);
+                //User testUser1 = new User("testUser1", "testUser1", false);
+                //userDAO.insert(testUser1);
 
                 ProductDAO productDAO = INSTANCE.productDAO();
 

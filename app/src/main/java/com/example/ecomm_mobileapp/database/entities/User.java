@@ -31,14 +31,14 @@ public class User {
 
 
     // Constructor
-
-    public User( String userName, String password, boolean isAdmin) {
+    //public User(String userName, String password, boolean isAdmin) {
+    public User(String userName, String password, boolean isAdmin, String firstName, String lastName) {
         this.userName = userName;
         this.password = password;
         this.isAdmin = isAdmin;
         // TODO: add firstname and last name constructor as well
-        this.firstName = "fName"; // these are place holders, will add later
-        this.lastName = "lName";
+        this.firstName = firstName; // these are place holders, will add later
+        this.lastName = lastName;
     }
 
     @Override

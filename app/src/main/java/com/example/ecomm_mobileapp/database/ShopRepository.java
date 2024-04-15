@@ -13,7 +13,6 @@ import com.example.ecomm_mobileapp.database.entities.Payment;
 import com.example.ecomm_mobileapp.database.entities.Product;
 import com.example.ecomm_mobileapp.database.entities.User;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
@@ -30,11 +29,11 @@ public class ShopRepository {
     private final LiveData<List<Cart>> allCarts;
     private final LiveData<List<Order>> allOrders;
     private final LiveData<List<Payment>> allPayments;
+    public static ShopRepository repository;
 
-    private static ShopRepository repository;
-
-    public ShopRepository(Application application) {
-        ShopDatabase db = ShopDatabase.getDatabase(application);
+    private ShopRepository(Application application) {
+        Context context = application.getApplicationContext();
+        ShopDatabase db = ShopDatabase.getDatabase(context);
         this.userDAO = db.userDAO();
         this.productDAO = db.productDAO();
         this.cartDAO = db.cartDAO();
@@ -45,12 +44,7 @@ public class ShopRepository {
         this.allCarts = cartDAO.getAllCart();
         this.allOrders = orderDAO.getAllOrders();
         this.allPayments = paymentDAO.getAllPayments();
-
-
-
     }
-
-
 
     public LiveData<List<User>> getAllUsers() {
         return this.allUsers;
@@ -77,7 +71,7 @@ public class ShopRepository {
         return null;
     }
 
-    public void insertUser(User... user) {
+    public void insertUser(User user) {
         ShopDatabase.databaseWriteExecutor.execute(() -> {
             userDAO.insert(user);
         });
@@ -108,7 +102,7 @@ public class ShopRepository {
         return this.allOrders;
     }
 
-    public void insertUser(Order... order) {
+    public void insertOrder(Order... order) {
         ShopDatabase.databaseWriteExecutor.execute(() -> {
             orderDAO.insert(order);
         });
@@ -118,9 +112,17 @@ public class ShopRepository {
         return this.allPayments;
     }
 
-    public void insertUser(Payment... payment) {
+    public void insertPayment(Payment... payment) {
         ShopDatabase.databaseWriteExecutor.execute(() -> {
             paymentDAO.insert(payment);
         });
+    }
+
+    public LiveData<User> getUserByUserName(String username) {
+        return userDAO.getUserByUserName(username);
+    }
+
+    public LiveData<User> getUserByUserId(int userId) {
+        return userDAO.getUserByUserId(userId);
     }
 }
