@@ -33,6 +33,10 @@ public interface CartDAO {
     @Query("SELECT * FROM " + ShopDatabase.CART_TABLE + " WHERE userId = :userId")
     LiveData<List<Cart>> getAllCartByUserId(int userId);
 
+    // Link to usage: https://www.quora.com/How-do-you-write-a-query-to-get-all-the-rows-from-one-table-and-only-those-that-have-matching-values-in-another-table
+    @Query("SELECT * FROM " + ShopDatabase.PRODUCT_TABLE + " INNER JOIN " + ShopDatabase.CART_TABLE  + " ON " + ShopDatabase.CART_TABLE + ".productId = " + ShopDatabase.PRODUCT_TABLE + ".id and " + ShopDatabase.CART_TABLE + ".userId = :userId" )
+    LiveData<List<Product>> getAllProductsInCartByUserId(int userId);
+
 
 
 

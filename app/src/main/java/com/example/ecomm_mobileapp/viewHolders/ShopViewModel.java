@@ -27,6 +27,10 @@ public class ShopViewModel extends AndroidViewModel {
         return repository.getAllCartsByUserId(userId);
     }
 
+    public LiveData<List<Product>> getAllProductsInCartByUserId(int userId) {
+        return repository.getAllProductsInCartByUserId(userId);
+    }
+
     public LiveData<Product> getProductFromCart(Cart cart) {
         return repository.getProductFromCart(cart);
     }

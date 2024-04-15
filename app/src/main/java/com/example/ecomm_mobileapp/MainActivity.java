@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private ShopViewModel shopViewModel;
 //    private ShopDatabase db;
 
-    private final int loggedInUserId = -1;
+    private final int loggedInUserId = 1;
 
     public static final String TAG = "CRT_SHOP";
 
@@ -48,15 +48,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         //Log.i(MainActivity.TAG, "Hello World");
 
-        SharedPreferences sharedPreferences = getSharedPreferences("user_info", Context.MODE_PRIVATE);
-        String savedUsername = sharedPreferences.getString("username", "");
-        if (savedUsername.isEmpty()) {
-            Intent intent = LoginActivity.loginIntentFactory(getApplicationContext());
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Added flags to clear the activity stack due to fatal exception in main.
-            startActivity(intent);
-            finish();
-            return;
-        }
+//        SharedPreferences sharedPreferences = getSharedPreferences("user_info", Context.MODE_PRIVATE);
+//        String savedUsername = sharedPreferences.getString("username", "");
+//        if (savedUsername.isEmpty()) {
+//            Intent intent = LoginActivity.loginIntentFactory(getApplicationContext());
+//            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Added flags to clear the activity stack due to fatal exception in main.
+//            startActivity(intent);
+//            finish();
+//            return;
+//        }
 
         repository = ShopRepository.getRepository(getApplication());
         shopViewModel = new ViewModelProvider(this).get(ShopViewModel.class);
@@ -115,4 +115,3 @@ public class MainActivity extends AppCompatActivity {
 }
 
 
-}

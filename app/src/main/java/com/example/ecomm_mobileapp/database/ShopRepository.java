@@ -137,4 +137,8 @@ public class ShopRepository {
     public LiveData<Product> getProductFromCart(Cart cart) {
         return productDAO.getProductById(cart.getProductId());
     }
+
+    public LiveData<List<Product>> getAllProductsInCartByUserId(int userId) {
+        return cartDAO.getAllProductsInCartByUserId(userId);
+    }
 }

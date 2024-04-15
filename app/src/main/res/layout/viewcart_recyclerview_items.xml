@@ -26,7 +26,7 @@
             />
 
         <TextView
-            android:id="@+id/viewcart_recyclerview_product_description"
+            android:id="@+id/viewcart_recyclerview_product_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Price of Item"
