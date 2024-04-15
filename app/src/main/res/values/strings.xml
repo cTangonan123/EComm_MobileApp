@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">EComm_MobileApp</string>
+    <string name="create_a_new_account">New user? Click here to create a new account</string>
+    <string name="amaz_n">Amaz\'n</string>
+    <string name="password">password</string>
+    <string name="username">username</string>
+    <string name="login">login</string>
+    <string name="create_new_account">Create New Account</string>
+    <string name="enter_a_new_username_here">Enter a new username here</string>
+    <string name="enter_a_new_password_here">Enter a new password here</string>
+    <string name="last_name">Last Name</string>
+    <string name="first_name">First Name</string>
+    <string name="sharedpreference_file_key">cTangPrefFileName</string>
+    <string name="preference_userId_key">ShopPreferenceUserIdKeyUser</string>
+    <string name="welcome_to_amaz_n">Welcome to Amaz\'n!</string>
+    <string name="please_re_enter_your_password">Please re-enter your password</string>
 </resources>

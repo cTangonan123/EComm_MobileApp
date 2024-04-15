@@ -13,7 +13,7 @@ import java.util.List;
 
 @Dao
 public interface UserDAO {
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(User... user);
 
     @Delete
@@ -33,6 +33,9 @@ public interface UserDAO {
 
     @Query("SELECT * FROM " + ShopDatabase.USER_TABLE + " WHERE userName = :userName")
     LiveData<User> getUserByUserName(String userName);
+
+    @Query("SELECT * from " + ShopDatabase.USER_TABLE + " WHERE id == :userId")
+    LiveData<User> getUserByUserId(int userId);
 
     //TODO: add more queries as the app is built
 
