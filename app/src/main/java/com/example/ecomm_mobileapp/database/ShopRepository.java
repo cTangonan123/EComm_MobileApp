@@ -123,4 +123,16 @@ public class ShopRepository {
             paymentDAO.insert(payment);
         });
     }
+
+    public LiveData<List<Cart>> getAllCartsByUserId(int userId) {
+        return cartDAO.getAllCartByUserId(userId);
+    }
+
+    public LiveData<Product> getProductByProductId(int productId) {
+        return productDAO.getProductById(productId);
+    }
+
+    public LiveData<Product> getProductFromCart(Cart cart) {
+        return productDAO.getProductById(cart.getProductId());
+    }
 }

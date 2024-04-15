@@ -29,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private ShopRepository repository;
 
+    // TODO: take out default value of loggedInUserId once maria has logging in and out working
+    private int loggedInUserId = 1;
+
     private ShopViewModel shopViewModel;
 //    private ShopDatabase db;
     public static final String TAG = "CRT_SHOP";
@@ -74,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, "You clicked the ViewCart button", Toast.LENGTH_LONG).show();
-                startActivity(ViewCartActivity.viewCartActivityIntentFactory(getApplicationContext()));
+                startActivity(ViewCartActivity.viewCartActivityIntentFactory(getApplicationContext(), loggedInUserId) );
             }
         });
 

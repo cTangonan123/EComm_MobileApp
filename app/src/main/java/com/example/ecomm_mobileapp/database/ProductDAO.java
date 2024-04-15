@@ -25,6 +25,11 @@ public interface ProductDAO {
 //    @Query("SELECT * FROM " + ShopDatabase.PRODUCT_TABLE + " WHERE id = :productId")
 //    LiveData<Product> getProductByProductId(int productId);
 
+    @Query("SELECT * FROM " + ShopDatabase.PRODUCT_TABLE + " WHERE id = :productId")
+    LiveData<Product> getProductById(int productId);
+
     @Query("SELECT * FROM " + ShopDatabase.PRODUCT_TABLE)
     LiveData<List<Product>> getAllProducts();
+
+
 }

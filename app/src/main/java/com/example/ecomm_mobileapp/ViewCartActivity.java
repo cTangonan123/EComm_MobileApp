@@ -17,6 +17,8 @@ public class ViewCartActivity extends AppCompatActivity {
     private ActivityViewCartBinding binding;
     private ShopRepository repository;
 
+    private int loggedInUserId;
+
 //    TODO: talk to Maria and talk about adding new Model,Holder,Adapters for each RecyclerView instance within the app
 //    private ShopViewModel shopViewModel;
 
@@ -30,8 +32,10 @@ public class ViewCartActivity extends AppCompatActivity {
 
     }
 
-    static Intent viewCartActivityIntentFactory(Context context) {
+    static Intent viewCartActivityIntentFactory(Context context, int userId) {
+
         Intent intent = new Intent(context, ViewCartActivity.class);
+
         return intent;
     }
 }

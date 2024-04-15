@@ -9,7 +9,7 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.example.ecomm_mobileapp.database.entities.Cart;
-import com.example.ecomm_mobileapp.database.entities.Order;
+import com.example.ecomm_mobileapp.database.entities.Product;
 
 import java.util.List;
 
@@ -29,6 +29,12 @@ public interface CartDAO {
 
     @Query("DELETE FROM " + ShopDatabase.CART_TABLE)
     void deleteAll();
+
+    @Query("SELECT * FROM " + ShopDatabase.CART_TABLE + " WHERE userId = :userId")
+    LiveData<List<Cart>> getAllCartByUserId(int userId);
+
+
+
 
 //    @Query("SELECT * FROM " + ShopDatabase.CART_TABLE + " WHERE cartId = :cartId")
 //    LiveData<Cart> getCartById(int cartId);
