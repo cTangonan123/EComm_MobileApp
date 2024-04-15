@@ -49,11 +49,10 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("user_info", Context.MODE_PRIVATE);
         String savedUsername = sharedPreferences.getString("username", "");
         if (savedUsername.isEmpty()) {
-            // User is not logged in, start the LoginActivity
             Intent intent = LoginActivity.loginIntentFactory(getApplicationContext());
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Add flags to clear the activity stack
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Added flags to clear the activity stack due to fatal exception in main.
             startActivity(intent);
-            finish(); // Finish MainActivity to prevent going back to it with the back button
+            finish();
             return;
         }
 
@@ -107,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
 
     static Intent mainActivityIntentFactory(Context context, int userId) {
         Intent intent = new Intent(context, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Add flags to clear the activity stack
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Added flags to clear the activity stack due to fatal exception in main.
         return intent;
     }
 }

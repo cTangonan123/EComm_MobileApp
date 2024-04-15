@@ -71,7 +71,7 @@ public class ShopRepository {
         return null;
     }
 
-    public void insertUser(User user) {
+    public void insertUser(User... user) {
         ShopDatabase.databaseWriteExecutor.execute(() -> {
             userDAO.insert(user);
         });

@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void verifyUser() {
-        String username = userNameField.getText().toString().trim();
+        String username = userNameField.getText().toString().trim(); //added due to some issues, may take out later.
         String password = passwordField.getText().toString().trim();
 
         if (username.isEmpty() || password.isEmpty()) {
