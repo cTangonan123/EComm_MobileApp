@@ -1,11 +1,13 @@
 package com.example.ecomm_mobileapp.viewHolders;
 
+import android.app.Activity;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 
+import com.example.ecomm_mobileapp.database.comboHolders.ProductAndCart;
 import com.example.ecomm_mobileapp.database.entities.Product;
 
 import java.util.List;

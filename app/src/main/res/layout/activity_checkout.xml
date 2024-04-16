@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".CheckoutActivity">
 
+
     <ActionMenuView
         android:id="@+id/viewcart_header"
         android:background="@color/color_primary"
@@ -32,8 +33,9 @@
             android:textColor="@color/color_primary"
             android:text="Logout"
             android:textSize="20sp"
-            /> <!--this is a comment-->
+            />
     </ActionMenuView>
+
 
 
 

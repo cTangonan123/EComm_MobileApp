@@ -1,20 +1,23 @@
 package com.example.ecomm_mobileapp.viewHolders;
 
+import android.util.Log;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 
+import com.example.ecomm_mobileapp.MainActivity;
+import com.example.ecomm_mobileapp.database.comboHolders.ProductAndCart;
 import com.example.ecomm_mobileapp.database.entities.Product;
-
-import java.util.List;
 
 public class ViewCartViewAdapter extends ListAdapter<Product, ViewCartViewHolder> {
 
     public ViewCartViewAdapter(@NonNull DiffUtil.ItemCallback<Product> diffCallback) {
         super(diffCallback);
     }
+
+
 
     @NonNull
     @Override
@@ -25,6 +28,7 @@ public class ViewCartViewAdapter extends ListAdapter<Product, ViewCartViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewCartViewHolder holder, int position) {
         Product current = getItem(position);
+        Log.i(MainActivity.TAG, "position: " + position);
         holder.bind(current);
     }
 

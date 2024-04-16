@@ -12,7 +12,7 @@ import com.example.ecomm_mobileapp.database.entities.Product;
 import java.util.List;
 
 public class ShopViewModel extends AndroidViewModel {
-    private ShopRepository repository;
+    public ShopRepository repository;
 
     public ShopViewModel (Application application) {
         super(application);
@@ -25,6 +25,10 @@ public class ShopViewModel extends AndroidViewModel {
 
     public LiveData<List<Cart>> getAllCartsByUserId(int userId) {
         return repository.getAllCartsByUserId(userId);
+    }
+
+    public LiveData<Cart> getCartFromProductIdAndUserId(int productId,int userId) {
+        return repository.getCartFromProductIdAndUserId(productId, userId);
     }
 
     public LiveData<List<Product>> getAllProductsInCartByUserId(int userId) {
@@ -40,6 +44,8 @@ public class ShopViewModel extends AndroidViewModel {
     }
 
     public void insertProduct(Product product) {repository.insertProduct(product);}
+
+    public void removecart(Cart cart) {repository.removeCartFromTable(cart);}
 
 
 
