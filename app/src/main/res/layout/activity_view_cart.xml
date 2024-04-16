@@ -56,7 +56,7 @@
 
         <Button
             android:id="@+id/viewcart_button_back_to_main"
-            android:layout_width="wrap_content"
+            android:layout_width="160dp"
             android:layout_height="60dp"
             android:text="Back to Shop"
             android:textSize="15dp"
@@ -65,8 +65,18 @@
             android:backgroundTint="@color/color_tertiary"
             android:textColor="@color/color_primary"
             android:shadowColor="@color/color_primary"
-
-
+            />
+        <Button
+            android:id="@+id/viewcart_button_checkout"
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:text="Checkout"
+            android:textSize="15dp"
+            android:layout_margin="3dp"
+            android:layout_gravity="center_vertical"
+            android:backgroundTint="@color/color_tertiary"
+            android:textColor="@color/color_primary"
+            android:shadowColor="@color/color_primary"
             />
     </LinearLayout>
 

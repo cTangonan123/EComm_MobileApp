@@ -42,6 +42,7 @@ public class ViewCartActivity extends AppCompatActivity {
         shopViewModel = new ViewModelProvider(this).get(ShopViewModel.class);
 
         Button btnBackToMain = (Button)findViewById(R.id.viewcart_button_back_to_main);
+        Button btnCheckout = (Button)findViewById(R.id.viewcart_button_checkout);
 
         //TODO: incorporate RecyclerView in order to view products in cart of associated userId along with the quantity of the item they possess.
         RecyclerView recyclerView = binding.viewCartRecyclerviewItems;
@@ -58,6 +59,13 @@ public class ViewCartActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(MainActivity.mainActivityIntentFactory(getApplicationContext(), loggedInUserId));
+            }
+        });
+
+        btnCheckout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(CheckoutActivity.checkoutActivityIntentFactory(getApplicationContext(), loggedInUserId));
             }
         });
 
