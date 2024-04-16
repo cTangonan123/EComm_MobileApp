@@ -124,4 +124,20 @@ public class ShopRepository {
     public LiveData<User> getUserByUserId(int userId) {
         return userDAO.getUserByUserId(userId);
     }
+
+    public LiveData<List<Cart>> getAllCartsByUserId(int userId) {
+        return cartDAO.getAllCartByUserId(userId);
+    }
+
+    public LiveData<Product> getProductByProductId(int productId) {
+        return productDAO.getProductById(productId);
+    }
+
+    public LiveData<Product> getProductFromCart(Cart cart) {
+        return productDAO.getProductById(cart.getProductId());
+    }
+
+    public LiveData<List<Product>> getAllProductsInCartByUserId(int userId) {
+        return cartDAO.getAllProductsInCartByUserId(userId);
+    }
 }

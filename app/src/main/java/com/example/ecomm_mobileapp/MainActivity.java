@@ -23,6 +23,7 @@ import com.example.ecomm_mobileapp.database.UserDAO;
 import com.example.ecomm_mobileapp.database.entities.User;
 import com.example.ecomm_mobileapp.databinding.ActivityMainBinding;
 import com.example.ecomm_mobileapp.viewHolders.ShopAdapter;
+import com.example.ecomm_mobileapp.viewHolders.ShopViewHolder;
 import com.example.ecomm_mobileapp.viewHolders.ShopViewModel;
 
 import java.util.List;
@@ -38,7 +39,9 @@ public class MainActivity extends AppCompatActivity {
     private ShopRepository repository;
 
     private ShopViewModel shopViewModel;
-    //private ShopDatabase db;
+//    private ShopDatabase db;
+
+    private final int loggedInUserId = 1;
 
     public static final String TAG = "CRT_SHOP";
 
@@ -99,11 +102,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // TODO: create class and intent factory for viewCartActivity
-        Button btnViewCart = (Button) findViewById(R.id.main_button_viewcart);
+        Button btnViewCart = (Button)findViewById(R.id.main_button_viewcart);
         btnViewCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, "You clicked the ViewCart button", Toast.LENGTH_LONG).show();
+                startActivity(ViewCartActivity.viewCartActivityIntentFactory(getApplicationContext(), loggedInUserId) );
             }
         });
     }
@@ -223,4 +227,5 @@ public class MainActivity extends AppCompatActivity {
         return intent;
     }
 }
+
 

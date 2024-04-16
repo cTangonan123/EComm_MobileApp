@@ -4,18 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <!--TODO:
-        - add ids
-        - extract strings to res/strings
-        - finish watching recyclerView tutorial
-    -->
-
-
+    tools:context=".ViewCartActivity">
 
     <ActionMenuView
-        android:id="@+id/main_header"
+        android:id="@+id/viewcart_header"
         android:background="@color/color_primary"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -24,75 +16,49 @@
         android:paddingStart="3dp"
         android:paddingEnd="3dp">
         <TextView
-            android:id="@+id/main_header_title"
+            android:id="@+id/viewcart_header_title"
             android:layout_width="60dp"
             android:layout_height="fill_parent"
             android:textColor="@color/color_white"
             android:text="Store Name"
             android:textSize="30sp"
             android:textAlignment="textStart"
-        />
+            />
         <Button
-            android:id="@+id/main_header_logout_button"
+            android:id="@+id/viewcart_header_logout_button"
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:backgroundTint="@color/color_tertiary"
             android:textColor="@color/color_primary"
             android:text="Logout"
             android:textSize="20sp"
-        /> <!--this is a comment-->
+            /> <!--this is a comment-->
     </ActionMenuView>
 
-
-
-    <!-- is the RecyclerView Class,
-        - will be updated with seperate view items with onClick listeners
-    -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/main_recyclerview_items"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="100dp"
-        app:layout_constraintTop_toBottomOf="@id/main_header"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/view_cart_recyclerview_items"
+        tools:listitem="@layout/viewcart_recyclerview_items"
+        app:layout_constraintTop_toBottomOf="@id/viewcart_header"
         app:layout_constraintStart_toStartOf="parent"
-        tools:listitem="@layout/main_recyclerview_items"/>
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/viewcart_footer_buttons" />
 
     <LinearLayout
-
+        android:id="@+id/viewcart_footer_buttons"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:paddingStart="6dp"
         android:paddingEnd="6dp"
         android:gravity="center">
+
         <Button
-            android:id="@+id/main_button_viewusers"
+            android:id="@+id/viewcart_button_back_to_main"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
-            android:text="View Users"
-            android:textSize="15dp"
-            android:layout_margin="3dp"
-            android:layout_gravity="center_vertical"
-            android:visibility="gone"
-        />
-        <Button
-            android:id="@+id/main_button_viewitems"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:text="View Items"
-            android:textSize="15dp"
-            android:layout_margin="3dp"
-            android:layout_gravity="center_vertical"
-            android:visibility="gone"
-        />
-        <Button
-            android:id="@+id/main_button_viewcart"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:text="View Cart"
+            android:text="Back to Shop"
             android:textSize="15dp"
             android:layout_margin="3dp"
             android:layout_gravity="center_vertical"
@@ -101,7 +67,7 @@
             android:shadowColor="@color/color_primary"
 
 
-        />
+            />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,7 +9,7 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.example.ecomm_mobileapp.database.entities.Cart;
-import com.example.ecomm_mobileapp.database.entities.Order;
+import com.example.ecomm_mobileapp.database.entities.Product;
 
 import java.util.List;
 
@@ -29,6 +29,16 @@ public interface CartDAO {
 
     @Query("DELETE FROM " + ShopDatabase.CART_TABLE)
     void deleteAll();
+
+    @Query("SELECT * FROM " + ShopDatabase.CART_TABLE + " WHERE userId = :userId")
+    LiveData<List<Cart>> getAllCartByUserId(int userId);
+
+    // Link to usage: https://www.quora.com/How-do-you-write-a-query-to-get-all-the-rows-from-one-table-and-only-those-that-have-matching-values-in-another-table
+    @Query("SELECT * FROM " + ShopDatabase.PRODUCT_TABLE + " INNER JOIN " + ShopDatabase.CART_TABLE  + " ON " + ShopDatabase.CART_TABLE + ".productId = " + ShopDatabase.PRODUCT_TABLE + ".id and " + ShopDatabase.CART_TABLE + ".userId = :userId" )
+    LiveData<List<Product>> getAllProductsInCartByUserId(int userId);
+
+
+
 
 //    @Query("SELECT * FROM " + ShopDatabase.CART_TABLE + " WHERE cartId = :cartId")
 //    LiveData<Cart> getCartById(int cartId);

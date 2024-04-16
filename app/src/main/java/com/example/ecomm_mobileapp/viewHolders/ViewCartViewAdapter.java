@@ -10,19 +10,20 @@ import com.example.ecomm_mobileapp.database.entities.Product;
 
 import java.util.List;
 
-public class ShopAdapter extends ListAdapter<Product, ShopViewHolder> {
-    public ShopAdapter(@NonNull DiffUtil.ItemCallback<Product> diffCallback) {
+public class ViewCartViewAdapter extends ListAdapter<Product, ViewCartViewHolder> {
+
+    public ViewCartViewAdapter(@NonNull DiffUtil.ItemCallback<Product> diffCallback) {
         super(diffCallback);
     }
 
     @NonNull
     @Override
-    public ShopViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return ShopViewHolder.create(parent);
+    public ViewCartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return ViewCartViewHolder.create(parent);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ShopViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewCartViewHolder holder, int position) {
         Product current = getItem(position);
         holder.bind(current);
     }
@@ -38,4 +39,5 @@ public class ShopAdapter extends ListAdapter<Product, ShopViewHolder> {
             return oldItem.equals(newItem);
         }
     }
+
 }
