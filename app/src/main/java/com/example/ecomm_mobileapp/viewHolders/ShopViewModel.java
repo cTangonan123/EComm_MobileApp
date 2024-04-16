@@ -6,7 +6,9 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.ecomm_mobileapp.database.ShopRepository;
+import com.example.ecomm_mobileapp.database.entities.Payment;
 import com.example.ecomm_mobileapp.database.entities.Product;
+
 
 import java.util.List;
 
@@ -24,6 +26,7 @@ public class ShopViewModel extends AndroidViewModel {
 
     public void insertProduct(Product product) {repository.insertProduct(product);}
 
-
-
+    public LiveData<List<Payment>> getAllPaymentsByUserId(int userId) {
+        return repository.getAllPayments(userId);
+    }
 }

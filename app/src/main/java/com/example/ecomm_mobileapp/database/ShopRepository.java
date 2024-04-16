@@ -31,9 +31,8 @@ public class ShopRepository {
     private final LiveData<List<Payment>> allPayments;
     public static ShopRepository repository;
 
-    private ShopRepository(Application application) {
-        Context context = application.getApplicationContext();
-        ShopDatabase db = ShopDatabase.getDatabase(context);
+    public ShopRepository(Application application) {
+        ShopDatabase db = ShopDatabase.getDatabase(application);
         this.userDAO = db.userDAO();
         this.productDAO = db.productDAO();
         this.cartDAO = db.cartDAO();
@@ -108,7 +107,7 @@ public class ShopRepository {
         });
     }
 
-    public LiveData<List<Payment>> getAllPayments() {
+    public LiveData<List<Payment>> getAllPayments(int userId) {
         return this.allPayments;
     }
 

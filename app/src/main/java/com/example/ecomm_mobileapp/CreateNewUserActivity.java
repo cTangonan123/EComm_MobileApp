@@ -80,4 +80,8 @@ public class CreateNewUserActivity extends AppCompatActivity {
         User user = new User(username, password, false, firstName, lastName); // Include first and last name in User creation
         repository.insertUser(user);
     }
+
+    public static Intent createNewUserIntentFactory(Context context) {
+        return new Intent(context, CreateNewUserActivity.class);
+    }
 }

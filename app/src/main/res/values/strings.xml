@@ -14,4 +14,10 @@
     <string name="preference_userId_key">ShopPreferenceUserIdKeyUser</string>
     <string name="welcome_to_amaz_n">Welcome to Amaz\'n!</string>
     <string name="please_re_enter_your_password">Please re-enter your password</string>
+    <string name="card_first_name">First Name</string>
+    <string name="payment_method">Payment Method</string>
+    <string name="card_last_name">Last Name</string>
+    <string name="card_number">Card Number</string>
+    <string name="cvv">CVV</string>
+    <string name="add_payment_method">Add Payment Method</string>
 </resources>

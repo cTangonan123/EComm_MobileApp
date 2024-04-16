@@ -33,6 +33,8 @@ public class LoginActivity extends AppCompatActivity {
     private EditText userNameField;
     private EditText passwordField;
 
+    private UserDAO userDao;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +45,8 @@ public class LoginActivity extends AppCompatActivity {
         passwordField = binding.editTextLoginPassword;
 
         repository = ShopRepository.getRepository(getApplication());
+
+        getDatabase();
 
         binding.buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,11 +76,10 @@ public class LoginActivity extends AppCompatActivity {
         userObserver.observe(this, new Observer<User>() {
             @Override
             public void onChanged(User user) {
-                userObserver.removeObservers(LoginActivity.this);
-
                 if (user != null) {
                     if (password.equals(user.getPassword())) {
-                        startActivity(MainActivity.mainActivityIntentFactory(getApplicationContext(), user.getId()));
+                        saveLoginStatus(username);
+                        startActivity(MainActivity.mainActivityIntentFactory(getApplicationContext(), username));
                         finish();
                     } else {
                         toastMaker("Invalid password");
@@ -84,13 +87,29 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     toastMaker(String.format("%s is not a valid username, please create a new account", username));
                 }
+                userObserver.removeObserver(this);
             }
         });
     }
 
+    private void saveLoginStatus(String username) {
+        SharedPreferences prefs = getSharedPreferences("login_prefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("isLoggedIn", true);
+        editor.putString("loggedInUsername", username);
+        editor.apply();
+    }
+
     private void createNewUserActivity() {
-        Intent intent = new Intent(this, CreateNewUserActivity.class);
+        Intent intent = CreateNewUserActivity.createNewUserIntentFactory(LoginActivity.this);
         startActivity(intent);
+    }
+
+    private void getDatabase() {
+        userDao = Room.databaseBuilder(this, ShopDatabase.class, ShopDatabase.DATABASE_NAME)
+                .allowMainThreadQueries()
+                .build()
+                .userDAO();
     }
 
     private void toastMaker(String message) {
