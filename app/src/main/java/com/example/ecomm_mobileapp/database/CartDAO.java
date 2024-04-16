@@ -37,6 +37,9 @@ public interface CartDAO {
     @Query("SELECT * FROM " + ShopDatabase.PRODUCT_TABLE + " INNER JOIN " + ShopDatabase.CART_TABLE  + " ON " + ShopDatabase.CART_TABLE + ".productId = " + ShopDatabase.PRODUCT_TABLE + ".id and " + ShopDatabase.CART_TABLE + ".userId = :userId" )
     LiveData<List<Product>> getAllProductsInCartByUserId(int userId);
 
+    @Query("SELECT * FROM " + ShopDatabase.CART_TABLE + " WHERE productId = :productId and userId = :userId")
+    LiveData<Cart> getCartFromProductIdAndUserId(int productId,int userId);
+
 
 
 

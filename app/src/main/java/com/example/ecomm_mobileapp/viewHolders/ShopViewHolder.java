@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ecomm_mobileapp.R;
+import com.example.ecomm_mobileapp.database.comboHolders.ProductAndCart;
 import com.example.ecomm_mobileapp.database.entities.Product;
 
 import java.util.Locale;
@@ -30,6 +31,7 @@ public class ShopViewHolder extends RecyclerView.ViewHolder {
     public void bind (Product product) {
         mainRecyclerItemViewName.setText(product.getProductName());
         mainRecyclerItemViewPrice.setText(String.format(Locale.US,"$%,.2f", product.getProductPrice()));
+
     }
 
     static ShopViewHolder create(ViewGroup parent) {

@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         shopViewModel.getAllProducts().observe(this, products -> {
+
             adapter.submitList(products);
         });
 

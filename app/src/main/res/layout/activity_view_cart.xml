@@ -36,14 +36,16 @@
     </ActionMenuView>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/view_cart_recyclerview_items"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:id="@+id/view_cart_recyclerview_items"
-        tools:listitem="@layout/viewcart_recyclerview_items"
-        app:layout_constraintTop_toBottomOf="@id/viewcart_header"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/viewcart_footer_buttons"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/viewcart_footer_buttons" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewcart_header"
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/viewcart_recyclerview_items" />
 
     <LinearLayout
         android:id="@+id/viewcart_footer_buttons"
@@ -56,7 +58,7 @@
 
         <Button
             android:id="@+id/viewcart_button_back_to_main"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="60dp"
             android:text="Back to Shop"
             android:textSize="15dp"
@@ -68,6 +70,18 @@
 
 
             />
+
+        <Button
+            android:id="@+id/viewcart_button_checkout"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:text="Checkout"
+            android:textSize="15dp"
+            android:layout_margin="3dp"
+            android:layout_gravity="center_vertical"
+            android:backgroundTint="@color/color_tertiary"
+            android:textColor="@color/color_primary"
+            android:shadowColor="@color/color_primary"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

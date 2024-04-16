@@ -141,4 +141,12 @@ public class ShopRepository {
     public LiveData<List<Product>> getAllProductsInCartByUserId(int userId) {
         return cartDAO.getAllProductsInCartByUserId(userId);
     }
+
+    public LiveData<Cart> getCartFromProductIdAndUserId(int productId, int userId) {
+        return cartDAO.getCartFromProductIdAndUserId(productId, userId);
+    }
+
+    public void removeCartFromTable(Cart cart) {
+        cartDAO.delete(cart);
+    }
 }
