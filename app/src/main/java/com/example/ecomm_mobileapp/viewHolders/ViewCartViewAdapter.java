@@ -2,6 +2,7 @@ package com.example.ecomm_mobileapp.viewHolders;
 
 import android.util.Log;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
