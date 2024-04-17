@@ -92,11 +92,13 @@ public class ShopRepository {
         return this.allCarts;
     }
 
-    public void insertUser(Cart... cart) {
+    public void insertCart(Cart... cart) {
         ShopDatabase.databaseWriteExecutor.execute(() -> {
             cartDAO.insert(cart);
         });
     }
+
+
 
     public LiveData<List<Order>> getAllOrders() {
         return this.allOrders;
