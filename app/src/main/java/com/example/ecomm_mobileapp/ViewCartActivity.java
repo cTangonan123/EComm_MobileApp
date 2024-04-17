@@ -59,6 +59,7 @@ public class ViewCartActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(MainActivity.mainActivityIntentFactory(getApplicationContext(), loggedInUserId));
+                finish();
             }
         });
 
@@ -66,6 +67,7 @@ public class ViewCartActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(CheckoutActivity.checkoutActivityIntentFactory(getApplicationContext(), loggedInUserId));
+                finish();
             }
         });
 

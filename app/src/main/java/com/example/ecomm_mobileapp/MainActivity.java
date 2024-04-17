@@ -97,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, "You clicked the ViewCart button", Toast.LENGTH_LONG).show();
                 startActivity(ViewCartActivity.viewCartActivityIntentFactory(getApplicationContext(), loggedInUserId) );
+
             }
         });
     }

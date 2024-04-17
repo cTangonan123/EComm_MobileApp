@@ -36,7 +36,6 @@
     </ActionMenuView>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/view_cart_recyclerview_items"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:id="@+id/view_cart_recyclerview_items"
@@ -57,7 +56,7 @@
 
         <Button
             android:id="@+id/viewcart_button_back_to_main"
-            android:layout_width="160dp"
+            android:layout_width="180dp"
             android:layout_height="60dp"
             android:text="Back to Shop"
             android:textSize="15dp"
@@ -66,10 +65,12 @@
             android:backgroundTint="@color/color_tertiary"
             android:textColor="@color/color_primary"
             android:shadowColor="@color/color_primary"
+
+
             />
         <Button
             android:id="@+id/viewcart_button_checkout"
-            android:layout_width="160dp"
+            android:layout_width="180dp"
             android:layout_height="60dp"
             android:text="Checkout"
             android:textSize="15dp"
@@ -78,6 +79,8 @@
             android:backgroundTint="@color/color_tertiary"
             android:textColor="@color/color_primary"
             android:shadowColor="@color/color_primary"
+
+
             />
     </LinearLayout>
 
