@@ -32,15 +32,26 @@
             android:textSize="30sp"
             android:textAlignment="textStart"
         />
+
+        <TextView
+            android:id="@+id/textViewUserName"
+            android:textColor="@color/color_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:layout_weight="1"
+            android:text="TextView" />
+
         <Button
             android:id="@+id/main_header_logout_button"
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:backgroundTint="@color/color_tertiary"
-            android:textColor="@color/color_primary"
             android:text="Logout"
-            android:textSize="20sp"
-        /> <!--this is a comment-->
+            android:textColor="@color/color_primary"
+            android:textSize="20sp" />
+
+        <!--this is a comment-->
     </ActionMenuView>
 
 

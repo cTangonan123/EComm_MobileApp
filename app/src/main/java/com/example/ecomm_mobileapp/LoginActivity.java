@@ -1,14 +1,10 @@
 package com.example.ecomm_mobileapp;
 
-import static com.example.ecomm_mobileapp.database.ShopDatabase.getDatabase;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -22,7 +18,6 @@ import com.example.ecomm_mobileapp.database.ShopRepository;
 import com.example.ecomm_mobileapp.database.UserDAO;
 import com.example.ecomm_mobileapp.database.entities.User;
 import com.example.ecomm_mobileapp.databinding.ActivityLoginBinding;
-import com.example.ecomm_mobileapp.databinding.ActivityMainBinding;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -34,6 +29,10 @@ public class LoginActivity extends AppCompatActivity {
     private EditText passwordField;
 
     private UserDAO userDao;
+
+    private int loggedInUserId = -1;
+
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,15 +78,17 @@ public class LoginActivity extends AppCompatActivity {
                 if (user != null) {
                     if (password.equals(user.getPassword())) {
                         saveLoginStatus(username);
-                        startActivity(MainActivity.mainActivityIntentFactory(getApplicationContext(), username));
+                        saveAdminStatus(user.isAdmin());
+                        startActivity(MainActivity.mainActivityIntentFactory(getApplicationContext(), user.getId()));
                         finish();
                     } else {
                         toastMaker("Invalid password");
+                        binding.editTextLoginPassword.setSelection(0);
                     }
                 } else {
                     toastMaker(String.format("%s is not a valid username, please create a new account", username));
+                    binding.editTextLoginUserName.setSelection(0);
                 }
-                userObserver.removeObserver(this);
             }
         });
     }
@@ -97,6 +98,13 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = prefs.edit();
         editor.putBoolean("isLoggedIn", true);
         editor.putString("loggedInUsername", username);
+        editor.apply();
+    }
+
+    private void saveAdminStatus(boolean isAdmin) {
+        SharedPreferences prefs = getSharedPreferences("login_prefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("isAdmin", isAdmin);
         editor.apply();
     }
 
@@ -116,7 +124,7 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
-    static Intent loginIntentFactory(Context context) {
+    static Intent loginIntentFactory(Context context, int userId) {
         return new Intent(context, LoginActivity.class);
     }
 }

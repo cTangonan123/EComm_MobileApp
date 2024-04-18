@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ecomm_mobileapp.database.ShopRepository;
 import com.example.ecomm_mobileapp.database.entities.Payment;
+import com.example.ecomm_mobileapp.databinding.ActivityPaymentBinding;
+import com.example.ecomm_mobileapp.databinding.ActivityPaymentMethodBinding;
 
 public class PaymentMethodActivity extends AppCompatActivity {
 
@@ -23,10 +25,15 @@ public class PaymentMethodActivity extends AppCompatActivity {
 
     private ShopRepository repository;
 
+    private int loggedInUserId = -1;
+
+    private ActivityPaymentMethodBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_method);
+        binding = ActivityPaymentMethodBinding.inflate(getLayoutInflater());
 
         cardFirstNameEditText = findViewById(R.id.editTextCardFirstName);
         cardLastNameEditText = findViewById(R.id.editTextCardLastName);
@@ -49,37 +56,30 @@ public class PaymentMethodActivity extends AppCompatActivity {
                     return;
                 }
 
-                if (!isValidCardNumber(cardNumber)) {
-                    Toast.makeText(PaymentMethodActivity.this, "Please enter a valid 16-digit card number", Toast.LENGTH_SHORT).show();
+                if (!isValidCardNumber(cardNumber, cardCVV)) {
+                    Toast.makeText(PaymentMethodActivity.this, "Please enter a valid card", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                savePaymentInfo(cardFirstName, cardLastName, cardNumber, cardCVV);
+                savePaymentInfo(cardFirstName, cardLastName, cardNumber, loggedInUserId);
 
                 Toast.makeText(PaymentMethodActivity.this, "Payment method added successfully", Toast.LENGTH_SHORT).show();
-
-                startActivity(new Intent(PaymentMethodActivity.this, Payment.class));
-                finish();
             }
         });
     }
 
-    private boolean isValidCardNumber(String cardNumber) {
-        return cardNumber != null && cardNumber.length() == 16;
+    private boolean isValidCardNumber(String cardNumber, String cvv) {
+        return cardNumber != null && cardNumber.length() == 16 && cvv != null && cvv.length() == 3;
     }
-    private void savePaymentInfo(String cardFirstName, String cardLastName, String cardNumber, String cardCVV) {
-        Payment payment = new Payment(cardFirstName, cardLastName, cardNumber, cardCVV);
+    private void savePaymentInfo(String cardFirstName, String cardLastName, String cardNumber, int userId) {
+        Payment payment = new Payment(cardFirstName, cardLastName, cardNumber, loggedInUserId);
         repository.insertPayment(payment);
 
-        Intent paymentIntent = createPaymentMethodIntentFactory(PaymentMethodActivity.this, cardFirstName, cardLastName, cardNumber);
+        Intent paymentIntent = paymentMethodIntentFactory(getApplicationContext());
         startActivity(paymentIntent);
     }
 
-    public static Intent createPaymentMethodIntentFactory(Context context, String firstName, String lastName, String cardNumber) {
-        Intent intent = new Intent(context, PaymentActivity.class);
-        intent.putExtra("firstName", firstName);
-        intent.putExtra("lastName", lastName);
-        intent.putExtra("cardNumber", cardNumber);
-        return intent;
+    static Intent paymentMethodIntentFactory(Context context) {
+        return new Intent(context, PaymentActivity.class);
     }
 }

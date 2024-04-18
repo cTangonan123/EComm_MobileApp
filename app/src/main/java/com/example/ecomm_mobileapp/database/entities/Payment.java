@@ -26,9 +26,9 @@ public class Payment {
     private String firstName;
     private String lastName;
 
-    public Payment(String firstName, String lastName,String cardNumber, String cardCVV) {
+    public Payment(String firstName, String lastName,String cardNumber, int userId) {
+        this.userId = userId;
         this.cardNumber = cardNumber;
-        this.cardCVV = cardCVV;
         this.firstName = firstName;
         this.lastName = lastName;
     }

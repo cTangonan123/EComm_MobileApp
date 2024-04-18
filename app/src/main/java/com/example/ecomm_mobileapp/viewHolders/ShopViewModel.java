@@ -16,7 +16,7 @@ import java.util.List;
 public class ShopViewModel extends AndroidViewModel {
     private ShopRepository repository;
 
-    public ShopViewModel (Application application) {
+    public ShopViewModel(Application application) {
         super(application);
         repository = ShopRepository.getRepository(application);
     }
@@ -41,9 +41,16 @@ public class ShopViewModel extends AndroidViewModel {
         return repository.getProductByProductId(productId);
     }
 
-    public void insertProduct(Product product) {repository.insertProduct(product);}
+    public void insertProduct(Product product) {
+        repository.insertProduct(product);
+    }
 
     public LiveData<List<Payment>> getAllPaymentsByUserId(int userId) {
         return repository.getAllPayments(userId);
     }
+
+    public void insert(Payment payment) {
+        repository.insertPayment(payment);
+    }
 }
+

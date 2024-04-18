@@ -65,9 +65,19 @@
             android:backgroundTint="@color/color_tertiary"
             android:textColor="@color/color_primary"
             android:shadowColor="@color/color_primary"
-
-
             />
+
+        <Button
+            android:id="@+id/viewcart_button_payment"
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:text="Payment"
+            android:textSize="15sp"
+            android:layout_margin="3dp"
+            android:layout_gravity="center_vertical"
+            android:backgroundTint="@color/color_tertiary"
+            android:textColor="@color/color_primary"
+            android:shadowColor="@color/color_primary" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

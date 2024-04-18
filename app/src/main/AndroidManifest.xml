@@ -13,6 +13,12 @@
         android:theme="@style/Theme.EComm_MobileApp"
         tools:targetApi="31">
         <activity
+            android:name=".AdminAddUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminViewUsersActivity"
+            android:exported="false" />
+        <activity
             android:name=".ViewCartActivity"
             android:exported="false" />
         <activity

@@ -67,9 +67,9 @@ public abstract class ShopDatabase extends RoomDatabase {
 
                 userDAO.deleteAll();
 
-                User admin = new User("admin1", "admin1", true, "Admin", "AdminLastName");
+                User admin = new User("admin2", "admin2", true, "Admin", "AdminLastName");
                 userDAO.insert(admin);
-                User testUser1 = new User("testUser1", "testUser1", false, "User", "UserLastName");
+                User testUser1 = new User("testuser1", "testuser1", false, "User", "UserLastName");
                 userDAO.insert(testUser1);
 
                 //User admin = new User("admin1", "admin1", true);
