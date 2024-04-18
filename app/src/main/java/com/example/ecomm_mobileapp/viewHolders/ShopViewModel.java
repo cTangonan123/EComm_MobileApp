@@ -9,6 +9,7 @@ import com.example.ecomm_mobileapp.database.ShopRepository;
 import com.example.ecomm_mobileapp.database.entities.Payment;
 import com.example.ecomm_mobileapp.database.entities.Cart;
 import com.example.ecomm_mobileapp.database.entities.Product;
+import com.example.ecomm_mobileapp.database.entities.User;
 
 
 import java.util.List;
@@ -51,6 +52,10 @@ public class ShopViewModel extends AndroidViewModel {
 
     public void insert(Payment payment) {
         repository.insertPayment(payment);
+    }
+
+    public LiveData<List<User>> getAllUsers() {
+        return repository.getAllUsers();
     }
 }
 

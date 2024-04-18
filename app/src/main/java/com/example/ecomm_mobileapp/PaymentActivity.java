@@ -31,7 +31,7 @@ public class PaymentActivity extends AppCompatActivity {
     private ShopRepository repository;
     private ShopViewModel shopViewModel;
 
-    private int loggedInUserId = -1;
+    private int loggedInUserId = 1;
 
     private List<Payment> paymentInfoList;
 
@@ -43,6 +43,7 @@ public class PaymentActivity extends AppCompatActivity {
         binding = ActivityPaymentBinding.inflate(getLayoutInflater());
 
         repository = ShopRepository.getRepository(getApplication());
+
 
 
         shopViewModel = new ViewModelProvider(this).get(ShopViewModel.class);

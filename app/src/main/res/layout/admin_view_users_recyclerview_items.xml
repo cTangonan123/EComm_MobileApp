@@ -45,7 +45,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/payment_recyclerview_select_card"
+        android:id="@+id/admin_viewusers_recyclerview_remove_button"
         android:layout_width="120dp"
         android:layout_height="50dp"
         android:layout_gravity="center_vertical"

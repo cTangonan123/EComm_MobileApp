@@ -37,9 +37,10 @@
     </ActionMenuView>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/view_cart_recyclerview_items"
+        android:id="@+id/admin_viewusers_recyclerview_users"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:paddingLeft="20dp"
         app:layout_constraintBottom_toTopOf="@id/admin_users_footer_buttons"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +65,7 @@
             android:shadowColor="@color/color_primary" />
 
         <Button
-            android:id="@+id/admin_view_users_button_checkout"
+            android:id="@+id/admin_view_users_button_add_user"
             android:layout_width="160dp"
             android:layout_height="60dp"
             android:text="Add User"

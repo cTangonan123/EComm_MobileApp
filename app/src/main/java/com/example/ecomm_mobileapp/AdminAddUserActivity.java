@@ -18,6 +18,7 @@ import androidx.lifecycle.Observer;
 
 import com.example.ecomm_mobileapp.database.ShopRepository;
 import com.example.ecomm_mobileapp.database.entities.User;
+import com.example.ecomm_mobileapp.databinding.ActivityAdminAddUserBinding;
 
 public class AdminAddUserActivity extends AppCompatActivity {
 
@@ -28,6 +29,10 @@ public class AdminAddUserActivity extends AppCompatActivity {
     private EditText passwordEditText;
 
     private Button adminAddNewUserButton;
+    private Button adminBackToMainButton;
+    private Button adminBackToViewUsersButton;
+
+    private ActivityAdminAddUserBinding binding;
 
     private ShopRepository repository;
 
@@ -36,12 +41,17 @@ public class AdminAddUserActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_add_user);
+        binding = ActivityAdminAddUserBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         firstNameEditText = findViewById(R.id.editTextAddFirstName);
         lastNameEditText = findViewById(R.id.editTextAddLastName);
         userNameEditText = findViewById(R.id.editTextAddUsername);
         passwordEditText = findViewById(R.id.editTextAddPassword);
+        adminBackToMainButton = findViewById(R.id.admin_view_users_button_back_to_main);
+        adminBackToViewUsersButton = findViewById(R.id.admin_view_users_button_checkout);
+
+
 
         adminAddNewUserButton = findViewById(R.id.buttonAdminAddUser);
 
@@ -61,6 +71,20 @@ public class AdminAddUserActivity extends AppCompatActivity {
                 }
 
                 checkUsernameExistsAndSaveUser(username, password, firstName, lastName);
+            }
+        });
+
+        adminBackToViewUsersButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(AdminViewUsersActivity.adminViewUsersActivityIntentFactory(getApplicationContext(), loggedInUserId));
+            }
+        });
+
+        adminBackToMainButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(MainActivity.mainActivityIntentFactory(getApplicationContext(), loggedInUserId));
             }
         });
     }
@@ -86,7 +110,8 @@ public class AdminAddUserActivity extends AppCompatActivity {
         User user = new User(username, password, false, firstName, lastName);
         repository.insertUser(user);
     }
-    public static Intent adminAddUserIntentFactory(Context context) {
-        return new Intent(context, CreateNewUserActivity.class);
+    static Intent adminAddUserIntentFactory(Context context, int userId) {
+        Intent intent =  new Intent(context, AdminAddUserActivity.class);
+        return intent;
     }
 }

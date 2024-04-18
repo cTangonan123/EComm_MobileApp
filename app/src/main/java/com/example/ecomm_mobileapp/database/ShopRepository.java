@@ -1,7 +1,6 @@
 package com.example.ecomm_mobileapp.database;
 
 import android.app.Application;
-import android.content.Context;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
@@ -104,6 +103,12 @@ public class ShopRepository {
     public void insertOrder(Order... order) {
         ShopDatabase.databaseWriteExecutor.execute(() -> {
             orderDAO.insert(order);
+        });
+    }
+
+    public void deleteUser(User user) {
+        ShopDatabase.databaseWriteExecutor.execute(() -> {
+            userDAO.delete(user);
         });
     }
 
