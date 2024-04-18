@@ -2,6 +2,8 @@ package com.example.ecomm_mobileapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +14,9 @@ import android.widget.Toast;
 
 import com.example.ecomm_mobileapp.database.ShopRepository;
 import com.example.ecomm_mobileapp.databinding.ActivityCheckoutBinding;
+import com.example.ecomm_mobileapp.viewHolders.CheckoutItemsAdapter;
 import com.example.ecomm_mobileapp.viewHolders.ShopViewModel;
+import com.example.ecomm_mobileapp.viewHolders.ViewCartViewAdapter;
 
 public class CheckoutActivity extends AppCompatActivity {
 
@@ -36,6 +40,17 @@ public class CheckoutActivity extends AppCompatActivity {
 
         btnBackToStore = binding.backToStoreButton;
         btnCheckout = binding.checkoutButton;
+
+        RecyclerView recyclerView = binding.checkoutRecyclerviewItems;
+        final CheckoutItemsAdapter adapter1 = new CheckoutItemsAdapter(new CheckoutItemsAdapter.ShopDiff());
+        recyclerView.setAdapter(adapter1);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        shopViewModel.getAllProductsInCartByUserId(loggedInUserId).observe(this, products -> {
+            adapter1.submitList(products);
+        });
+
+
 
         btnBackToStore.setOnClickListener(new View.OnClickListener() {
             @Override

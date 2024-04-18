@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ecomm_mobileapp.R;
+import com.example.ecomm_mobileapp.database.CartDAO;
+import com.example.ecomm_mobileapp.database.ShopDatabase;
 import com.example.ecomm_mobileapp.database.comboHolders.ProductAndCart;
 import com.example.ecomm_mobileapp.database.entities.Product;
 
@@ -44,7 +46,10 @@ public class ViewCartViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View v) {
                 // TODO: must delete cart from the cart table
-                Toast.makeText(v.getContext(),product.toString(), Toast.LENGTH_LONG).show();
+
+
+
+
 
 
             }
