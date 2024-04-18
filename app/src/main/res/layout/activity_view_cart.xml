@@ -72,13 +72,13 @@
             android:id="@+id/viewcart_button_checkout"
             android:layout_width="180dp"
             android:layout_height="60dp"
-            android:text="Checkout"
-            android:textSize="15dp"
-            android:layout_margin="3dp"
             android:layout_gravity="center_vertical"
+            android:layout_margin="3dp"
             android:backgroundTint="@color/color_tertiary"
-            android:textColor="@color/color_primary"
             android:shadowColor="@color/color_primary"
+            android:text="Checkout"
+            android:textColor="@color/color_primary"
+            android:textSize="15dp"
 
 
             />

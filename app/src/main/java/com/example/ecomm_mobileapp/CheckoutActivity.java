@@ -26,7 +26,7 @@ public class CheckoutActivity extends AppCompatActivity {
     private ShopViewModel shopViewModel;
 
     private Button btnBackToStore;
-    private Button btnCheckout;
+    private Button btnSelectPayment;
     private int loggedInUserId = 1;
 
     @Override
@@ -39,7 +39,7 @@ public class CheckoutActivity extends AppCompatActivity {
         shopViewModel = new ViewModelProvider(this).get(ShopViewModel.class);
 
         btnBackToStore = binding.backToStoreButton;
-        btnCheckout = binding.checkoutButton;
+        btnSelectPayment = binding.selectPaymentButton;
 
         RecyclerView recyclerView = binding.checkoutRecyclerviewItems;
         final CheckoutItemsAdapter adapter1 = new CheckoutItemsAdapter(new CheckoutItemsAdapter.ShopDiff());
@@ -59,12 +59,12 @@ public class CheckoutActivity extends AppCompatActivity {
             }
         });
 
-        btnCheckout.setOnClickListener(new View.OnClickListener() {
+        btnSelectPayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // TODO: Create a method which places an order
                 // TODO: Fix Order and OrderDAO in order to take in multiple Carts.
-                Toast.makeText(CheckoutActivity.this, "You clicked the checkout button", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CheckoutActivity.this, "You clicked the Select Payment Button", Toast.LENGTH_SHORT).show();
             }
         });
 

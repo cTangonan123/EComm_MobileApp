@@ -42,7 +42,7 @@ public class ViewCartActivity extends AppCompatActivity {
         shopViewModel = new ViewModelProvider(this).get(ShopViewModel.class);
 
         Button btnBackToMain = (Button)findViewById(R.id.viewcart_button_back_to_main);
-        Button btnToPayment = (Button)findViewById(R.id.viewcart_button_payment);
+//        Button btnToPayment = (Button)findViewById(R.id.viewcart_button_payment);
         Button btnCheckout = (Button)findViewById(R.id.viewcart_button_checkout);
 
         //TODO: incorporate RecyclerView in order to view products in cart of associated userId along with the quantity of the item they possess.
@@ -74,13 +74,13 @@ public class ViewCartActivity extends AppCompatActivity {
             }
         });
 
-        btnToPayment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ViewCartActivity.this, PaymentMethodActivity.class);
-                startActivity(intent);
-            }
-        });
+//        btnToPayment.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(ViewCartActivity.this, PaymentMethodActivity.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 
     static Intent viewCartActivityIntentFactory(Context context, int userId) {
