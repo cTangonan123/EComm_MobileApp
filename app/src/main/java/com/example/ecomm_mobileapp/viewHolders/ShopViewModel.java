@@ -30,6 +30,10 @@ public class ShopViewModel extends AndroidViewModel {
         return repository.getAllCartsByUserId(userId);
     }
 
+    public LiveData<Cart> getCartFromProductIdAndUserId(int productId,int userId) {
+        return repository.getCartFromProductIdAndUserId(productId, userId);
+    }
+
     public LiveData<List<Product>> getAllProductsInCartByUserId(int userId) {
         return repository.getAllProductsInCartByUserId(userId);
     }
@@ -49,6 +53,10 @@ public class ShopViewModel extends AndroidViewModel {
     public LiveData<List<Payment>> getAllPaymentsByUserId(int userId) {
         return repository.getAllPayments(userId);
     }
+    public void removecart(Cart cart) {repository.removeCartFromTable(cart);}
+
+
+
 
     public void insert(Payment payment) {
         repository.insertPayment(payment);

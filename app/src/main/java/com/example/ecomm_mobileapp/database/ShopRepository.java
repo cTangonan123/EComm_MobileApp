@@ -90,11 +90,13 @@ public class ShopRepository {
         return this.allCarts;
     }
 
-    public void insertUser(Cart... cart) {
+    public void insertCart(Cart... cart) {
         ShopDatabase.databaseWriteExecutor.execute(() -> {
             cartDAO.insert(cart);
         });
     }
+
+
 
     public LiveData<List<Order>> getAllOrders() {
         return this.allOrders;
@@ -142,7 +144,16 @@ public class ShopRepository {
         return productDAO.getProductById(cart.getProductId());
     }
 
+
     public LiveData<List<Product>> getAllProductsInCartByUserId(int userId) {
         return cartDAO.getAllProductsInCartByUserId(userId);
+    }
+
+    public LiveData<Cart> getCartFromProductIdAndUserId(int productId, int userId) {
+        return cartDAO.getCartFromProductIdAndUserId(productId, userId);
+    }
+
+    public void removeCartFromTable(Cart cart) {
+        cartDAO.delete(cart);
     }
 }

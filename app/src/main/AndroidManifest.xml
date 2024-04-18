@@ -19,6 +19,12 @@
             android:name=".AdminViewUsersActivity"
             android:exported="false" />
         <activity
+            android:name=".ProductViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CheckoutActivity"
+            android:exported="false" />
+        <activity
             android:name=".ViewCartActivity"
             android:exported="false" />
         <activity

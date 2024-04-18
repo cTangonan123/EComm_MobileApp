@@ -6,36 +6,43 @@
     android:layout_height="wrap_content"
     android:padding="6dp">
 
-    <ImageView
-        android:id="@+id/main_recyclerview_product_img"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginRight="6dp"
-        android:src="@mipmap/ic_launcher"
-        />
-
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:id="@+id/main_recyclerview_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/main_recyclerview_product_img"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="6dp"
+            android:src="@mipmap/ic_launcher"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+                <TextView
+                android:id="@+id/main_recyclerview_product_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name of item"
+                android:textSize="20dp"
+                android:layout_marginEnd="0dp"
+                />
 
             <TextView
-            android:id="@+id/main_recyclerview_product_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Name of item"
-            android:textSize="20dp"
-            android:layout_marginEnd="0dp"
-            />
+                android:id="@+id/main_recyclerview_product_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price of Item"
+                android:textSize="16dp"
+                android:layout_marginEnd="0dp"
+                />
 
-        <TextView
-            android:id="@+id/main_recyclerview_product_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Price of Item"
-            android:textSize="16dp"
-            android:layout_marginEnd="0dp"
-            />
+        </LinearLayout>
 
     </LinearLayout>
 
