@@ -1,5 +1,7 @@
 package com.example.ecomm_mobileapp.viewHolders;
 
+import static java.nio.file.Files.delete;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,13 +30,12 @@ public class ViewCartViewHolder extends RecyclerView.ViewHolder {
     public ViewCartViewHolder(@NonNull View itemView) {
         super(itemView);
 
-
-
         productNameTextView = itemView.findViewById(R.id.viewcart_recyclerview_product_name);
         productPriceTextView = itemView.findViewById(R.id.viewcart_recyclerview_product_price);
         // TODO: need to pull quantity from the cart
         productQuantityTextView = itemView.findViewById(R.id.viewcart_recyclerview_product_quantity);
         productRemoveFromCartButton = itemView.findViewById(R.id.viewcart_recyclerview_product_btn_remove);
+
     }
 
     public void bind (Product product) {
@@ -42,22 +43,14 @@ public class ViewCartViewHolder extends RecyclerView.ViewHolder {
         productPriceTextView.setText(String.format(Locale.US,"$%,.2f", product.getProductPrice()));
 //        productQuantityTextView.setText(String.format(Locale.US, "Qty: %", product.getCart().getCartQuantity()));
 
-        productRemoveFromCartButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // TODO: must delete cart from the cart table
 
-
-
-
-
-
-            }
-        });
     }
 
     static ViewCartViewHolder create (ViewGroup parent) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewcart_recyclerview_items, parent, false);
+
         return new ViewCartViewHolder(view);
     }
+
+
 }

@@ -52,6 +52,7 @@ public class ViewCartActivity extends AppCompatActivity {
 
         shopViewModel.getAllProductsInCartByUserId(loggedInUserId).observe(this, products -> {
             adapter.submitList(products);
+
         });
 
 
