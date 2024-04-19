@@ -57,6 +57,8 @@ public class CreateNewUserActivity extends AppCompatActivity {
                     return;
                 }
 
+
+
                 if (!passwordsMatch(password1, password2)) {
                     Toast.makeText(CreateNewUserActivity.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
                     return;
