@@ -21,6 +21,8 @@ import com.example.ecomm_mobileapp.databinding.ActivityViewCartBinding;
 import com.example.ecomm_mobileapp.viewHolders.ShopViewModel;
 import com.example.ecomm_mobileapp.viewHolders.ViewCartViewAdapter;
 
+import java.util.Locale;
+
 public class ViewCartActivity extends AppCompatActivity {
 
     private static final String ACTIVITIES_USER_ID = "com.example.ecomm_mobileapp.ACTIVITIES_USER_ID";
@@ -50,10 +52,11 @@ public class ViewCartActivity extends AppCompatActivity {
         shopViewModel = new ViewModelProvider(this).get(ShopViewModel.class);
 
         Button btnBackToMain = (Button)findViewById(R.id.viewcart_button_back_to_main);
-//        Button btnToPayment = (Button)findViewById(R.id.viewcart_button_payment);
-        Button btnCheckout = (Button)findViewById(R.id.viewcart_button_checkout);
+        Button btnToPayment = (Button)findViewById(R.id.viewcart_button_payment);
+//        Button btnCheckout = (Button)findViewById(R.id.viewcart_button_checkout);
         Button btnLogout = (Button)findViewById(R.id.viewcart_header_logout_button);
         TextView usernameTextView = findViewById(R.id.textViewUserName);
+        TextView subtotalTextView = findViewById(R.id.viewcart_total);
 
         //This binds the username to the textView in the main xml
         SharedPreferences prefs = getSharedPreferences("login_prefs", Context.MODE_PRIVATE);
@@ -69,6 +72,11 @@ public class ViewCartActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         shopViewModel.getAllProductsInCartByUserId(loggedInUserId).observe(this, products -> {
+            double subtotal = 0;
+            for (int i = 0; i < products.size(); i++) {
+                subtotal += products.get(i).getProductPrice();
+            }
+            subtotalTextView.setText(String.format(Locale.US, "Subtotal: $%,.2f", subtotal));
             adapter.submitList(products);
 
         });
@@ -83,21 +91,21 @@ public class ViewCartActivity extends AppCompatActivity {
             }
         });
 
-        btnCheckout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(CheckoutActivity.checkoutActivityIntentFactory(getApplicationContext(), loggedInUserId));
-                finish();
-            }
-        });
-
-//        btnToPayment.setOnClickListener(new View.OnClickListener() {
+//        btnCheckout.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                Intent intent = new Intent(ViewCartActivity.this, PaymentMethodActivity.class);
-//                startActivity(intent);
+//                startActivity(CheckoutActivity.checkoutActivityIntentFactory(getApplicationContext(), loggedInUserId));
+//                finish();
 //            }
 //        });
+
+        btnToPayment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = PaymentActivity.paymentIntentFactory(getApplicationContext(), loggedInUserId);
+                startActivity(intent);
+            }
+        });
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,7 +119,7 @@ public class ViewCartActivity extends AppCompatActivity {
         });
     }
 
-    static Intent viewCartActivityIntentFactory(Context context, int userId) {
+    public static Intent viewCartActivityIntentFactory(Context context, int userId) {
 
         Intent intent = new Intent(context, ViewCartActivity.class);
 
@@ -154,4 +162,6 @@ public class ViewCartActivity extends AppCompatActivity {
         outState.putInt(SAVED_INSTANCE_STATE_USERID_KEY, loggedInUserId);
         updateSharedPreference();
     }
+
+
 }

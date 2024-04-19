@@ -2,6 +2,7 @@ package com.example.ecomm_mobileapp.viewHolders;
 
 import static java.nio.file.Files.delete;
 
+import android.location.GnssAntennaInfo;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import com.example.ecomm_mobileapp.database.ShopDatabase;
 import com.example.ecomm_mobileapp.database.comboHolders.ProductAndCart;
 import com.example.ecomm_mobileapp.database.entities.Product;
 
+import java.util.List;
 import java.util.Locale;
 
 public class ViewCartViewHolder extends RecyclerView.ViewHolder {
@@ -35,6 +37,7 @@ public class ViewCartViewHolder extends RecyclerView.ViewHolder {
         // TODO: need to pull quantity from the cart
         productQuantityTextView = itemView.findViewById(R.id.viewcart_recyclerview_product_quantity);
         productRemoveFromCartButton = itemView.findViewById(R.id.viewcart_recyclerview_product_btn_remove);
+
 
     }
 
