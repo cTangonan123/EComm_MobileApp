@@ -88,15 +88,19 @@ public class MainActivity extends AppCompatActivity {
         //Check for Admin status and displays hidden button.
         boolean isAdmin = checkAdminStatus();
 
-        Button adminButton = findViewById(R.id.main_button_viewusers);
+        Button adminViewUsersButton = findViewById(R.id.main_button_viewusers);
+        Button admiViewItemsButton = findViewById(R.id.main_button_viewitems);
+
         if (isAdmin) {
-            adminButton.setVisibility(View.VISIBLE);
+            adminViewUsersButton.setVisibility(View.VISIBLE);
+            admiViewItemsButton.setVisibility(View.VISIBLE);
         } else {
-            adminButton.setVisibility(View.GONE);
+            adminViewUsersButton.setVisibility(View.GONE);
+            admiViewItemsButton.setVisibility(View.GONE);
         }
 
         // Set click listener for admin button
-        adminButton.setOnClickListener(new View.OnClickListener() {
+        adminViewUsersButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //TODO: COmplete this method.
@@ -104,6 +108,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        admiViewItemsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO: COmplete this method.
+                startActivity(AdminAddItemsActivity.adminAddItemsIntentFactory(getApplicationContext(), loggedInUserId));
+            }
+        });
 
         // TODO: finish adding holder, adapter, and ... for our Shop Class
         // TODO: Learn how to implement multiple Recycler Views.
