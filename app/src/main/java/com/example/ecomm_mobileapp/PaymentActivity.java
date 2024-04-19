@@ -64,10 +64,16 @@ public class PaymentActivity extends AppCompatActivity {
             }
         });
 
-        binding.paymentButtonToCheckout.setOnClickListener(new View.OnClickListener() {
+        binding.paymentButtonToAddPaymentMethod.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 goToPaymentMethodActivity();
+            }
+        });
+        binding.paymentButtonToCheckout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(CheckoutActivity.checkoutActivityIntentFactory(getApplicationContext(), loggedInUserId));
             }
         });
     }
@@ -77,7 +83,7 @@ public class PaymentActivity extends AppCompatActivity {
     }
 
     private void goToPaymentMethodActivity() {
-        Intent intent = new Intent(this, PaymentMethodActivity.class);
+        Intent intent = PaymentMethodActivity.paymentMethodIntentFactory(getApplicationContext(), loggedInUserId);
         startActivity(intent);
     }
 

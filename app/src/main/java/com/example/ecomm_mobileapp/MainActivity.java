@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        binding = com.example.ecomm_mobileapp.databinding.ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         //Log.i(MainActivity.TAG, "Hello World");
 
@@ -88,15 +88,16 @@ public class MainActivity extends AppCompatActivity {
         //Check for Admin status and displays hidden button.
         boolean isAdmin = checkAdminStatus();
 
-        Button adminViewUsersButton = findViewById(R.id.main_button_viewusers);
-        Button admiViewItemsButton = findViewById(R.id.main_button_viewitems);
+        Button adminViewUsersButton = binding.mainButtonViewusers;
+        Button admiViewItemsButton = binding.mainButtonViewitems;
 
         if (isAdmin) {
             adminViewUsersButton.setVisibility(View.VISIBLE);
             admiViewItemsButton.setVisibility(View.VISIBLE);
+
         } else {
-            adminViewUsersButton.setVisibility(View.GONE);
-            admiViewItemsButton.setVisibility(View.GONE);
+            adminViewUsersButton.setVisibility(View.INVISIBLE);
+            admiViewItemsButton.setVisibility(View.INVISIBLE);
         }
 
         // Set click listener for admin button
@@ -105,16 +106,20 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //TODO: COmplete this method.
                 startActivity(AdminViewUsersActivity.adminViewUsersActivityIntentFactory(getApplicationContext(), loggedInUserId));
+                finish();
             }
         });
-
         admiViewItemsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //TODO: COmplete this method.
-                startActivity(AdminAddItemsActivity.adminAddItemsIntentFactory(getApplicationContext(), loggedInUserId));
+                startActivity(AdminViewItemsActivity.adminViewItemsActivityIntentFactory(getApplicationContext(), loggedInUserId));
+                finish();
             }
         });
+
+
+
 
         // TODO: finish adding holder, adapter, and ... for our Shop Class
         // TODO: Learn how to implement multiple Recycler Views.
@@ -141,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, "You clicked the ViewCart button", Toast.LENGTH_LONG).show();
                 startActivity(ViewCartActivity.viewCartActivityIntentFactory(getApplicationContext(), loggedInUserId) );
-
+                finish();
             }
         });
     }
@@ -167,6 +172,7 @@ public class MainActivity extends AppCompatActivity {
         getIntent().putExtra(ACTIVITIES_USER_ID, LOGGED_OUT);
 
         startActivity(LoginActivity.loginIntentFactory(getApplicationContext(), loggedInUserId));
+        finish();
     }
 
     private void updateSharedPreference() {

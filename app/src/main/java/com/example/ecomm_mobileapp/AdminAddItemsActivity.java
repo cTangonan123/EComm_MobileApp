@@ -23,10 +23,13 @@ import com.example.ecomm_mobileapp.databinding.ActivityAdminViewItemsBinding;
 
 public class AdminAddItemsActivity extends AppCompatActivity {
 
+    private int loggedInUserId = 1;
+
     private EditText productNameEditText;
     private EditText productDescriptionEditText;
     private EditText productPriceEditText;
     private Button addItemButton;
+    private Button backToStoreButton;
 
     private ActivityAdminAddItemsBinding binding;
 
@@ -42,6 +45,7 @@ public class AdminAddItemsActivity extends AppCompatActivity {
         productDescriptionEditText = findViewById(R.id.editText_admin_product_description);
         productPriceEditText = findViewById(R.id.editText_admin_product_price);
         addItemButton = findViewById(R.id.buttonAddItem);
+        backToStoreButton = binding.backToStoreButton;
 
         repository = ShopRepository.getRepository(getApplication());
 
@@ -65,6 +69,13 @@ public class AdminAddItemsActivity extends AppCompatActivity {
 
                 startActivity(new Intent(AdminAddItemsActivity.this, AdminViewItemsActivity.class));
                 finish();
+            }
+        });
+
+        backToStoreButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(MainActivity.mainActivityIntentFactory(getApplicationContext(), loggedInUserId));
             }
         });
     }

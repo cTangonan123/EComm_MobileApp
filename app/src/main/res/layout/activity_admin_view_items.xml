@@ -38,9 +38,9 @@
     </ActionMenuView>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/admin_view_items_recyclerview_items"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:id="@+id/admin_view_items_recyclerview_items"
         tools:listitem="@layout/admin_view_items_recyclerview_items"
         app:layout_constraintTop_toBottomOf="@id/admin_view_items_header"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,8 +67,6 @@
             android:backgroundTint="@color/color_tertiary"
             android:textColor="@color/color_primary"
             android:shadowColor="@color/color_primary"
-
-
             />
         <Button
             android:id="@+id/admin_button_add_items"
@@ -81,8 +79,6 @@
             android:text="Add Items"
             android:textColor="@color/color_primary"
             android:textSize="15dp"
-
-
             />
     </LinearLayout>
 

@@ -13,7 +13,6 @@ import com.example.ecomm_mobileapp.database.entities.Product;
 
 
 public class AdminViewItemsAdapter extends ListAdapter<Product, AdminViewsItemsViewHolder> {
-
     public AdminViewItemsAdapter(@NonNull DiffUtil.ItemCallback<Product> diffCallback) {
         super(diffCallback);
     }
@@ -27,7 +26,6 @@ public class AdminViewItemsAdapter extends ListAdapter<Product, AdminViewsItemsV
     @Override
     public void onBindViewHolder(@NonNull AdminViewsItemsViewHolder holder, int position) {
         Product current = getItem(position);
-        Log.i(MainActivity.TAG, "position: " + position);
         holder.bind(current);
     }
 

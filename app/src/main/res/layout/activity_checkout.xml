@@ -119,7 +119,7 @@
             android:id="@+id/select_payment_button"
             android:layout_width="180dp"
             android:layout_height="60dp"
-            android:text="Select Payment"
+            android:text="Confirm Checkout"
             android:textSize="15dp"
             android:layout_margin="3dp"
             android:layout_gravity="center_vertical"

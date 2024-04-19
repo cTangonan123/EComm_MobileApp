@@ -48,6 +48,8 @@ public class ViewCartActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         loginUser(savedInstanceState); //
 
+
+
         repository = ShopRepository.getRepository(getApplication());
         shopViewModel = new ViewModelProvider(this).get(ShopViewModel.class);
 

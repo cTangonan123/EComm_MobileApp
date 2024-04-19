@@ -58,10 +58,22 @@
             android:layout_width="125dp"
             android:layout_height="60dp"
             android:layout_gravity="center_vertical"
-            android:layout_margin="20dp"
+            android:layout_margin="5dp"
             android:backgroundTint="@color/color_tertiary"
             android:shadowColor="@color/color_primary"
             android:text="@string/back_to_shop"
+            android:textColor="@color/color_primary"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/payment_button_to_add_payment_method"
+            android:layout_width="125dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/color_tertiary"
+            android:shadowColor="@color/color_primary"
+            android:text="@string/add_payment_method"
             android:textColor="@color/color_primary"
             android:textSize="15sp" />
 
@@ -70,7 +82,7 @@
             android:layout_width="125dp"
             android:layout_height="60dp"
             android:layout_gravity="center_vertical"
-            android:layout_margin="20dp"
+            android:layout_margin="5dp"
             android:backgroundTint="@color/color_tertiary"
             android:shadowColor="@color/color_primary"
             android:text="@string/checkout"

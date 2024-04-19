@@ -84,11 +84,11 @@ public class PaymentMethodActivity extends AppCompatActivity {
         Payment payment = new Payment(cardFirstName, cardLastName, cardNumber, cardCVV, userId);
         repository.insertPayment(payment);
 
-        Intent paymentIntent = paymentMethodIntentFactory(getApplicationContext(), userId);
+        Intent paymentIntent = PaymentActivity.paymentIntentFactory(getApplicationContext(), loggedInUserId);
         startActivity(paymentIntent);
     }
 
     static Intent paymentMethodIntentFactory(Context context, int userId) {
-        return new Intent(context, PaymentActivity.class);
+        return new Intent(context, PaymentMethodActivity.class);
     }
 }

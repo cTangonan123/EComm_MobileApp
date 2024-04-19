@@ -32,8 +32,7 @@ public class AdminViewItemsActivity extends AppCompatActivity {
     private int loggedInUserId = 1;
     private ShopViewModel shopViewModel;
 
-    Button btnBackToMain;
-    Button btnAddItem;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,21 +46,19 @@ public class AdminViewItemsActivity extends AppCompatActivity {
         RecyclerView recyclerView = binding.adminViewItemsRecyclerviewItems;
         final AdminViewItemsAdapter adapter = new AdminViewItemsAdapter(new AdminViewItemsAdapter.ShopDiff());
         recyclerView.setAdapter(adapter);
-
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        shopViewModel.getAllProducts().observe(this, product -> {
-            adapter.submitList(product);
-
+        shopViewModel.getAllProducts().observe(this, products -> {
+            adapter.submitList(products);
         });
 
-        btnBackToMain = binding.adminItemsButtonBackToMain;
-        btnAddItem = binding.adminButtonAddItems;
+        Button btnBackToMain = binding.adminItemsButtonBackToMain;
+        Button btnAddItem = binding.adminButtonAddItems;
         btnBackToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(MainActivity.mainActivityIntentFactory(getApplicationContext(), loggedInUserId));
-                finish();
+//                finish();
             }
         });
 
@@ -69,7 +66,7 @@ public class AdminViewItemsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(AdminAddItemsActivity.adminAddItemsIntentFactory(getApplicationContext(), loggedInUserId));
-                finish();
+//                finish();
             }
         });
     }

@@ -87,17 +87,7 @@
             android:textSize="15dp"
             android:layout_margin="3dp"
             android:layout_gravity="center_vertical"
-            android:visibility="gone"
-        />
-        <Button
-            android:id="@+id/main_button_viewitems"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:text="View Items"
-            android:textSize="15dp"
-            android:layout_margin="3dp"
-            android:layout_gravity="center_vertical"
-            android:visibility="gone"
+            android:visibility="invisible"
         />
         <Button
             android:id="@+id/main_button_viewcart"
@@ -110,8 +100,16 @@
             android:backgroundTint="@color/color_tertiary"
             android:textColor="@color/color_primary"
             android:shadowColor="@color/color_primary"
-
-
+        />
+        <Button
+            android:id="@+id/main_button_viewitems"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:text="View Items"
+            android:textSize="15dp"
+            android:layout_margin="3dp"
+            android:layout_gravity="center_vertical"
+            android:visibility="invisible"
         />
     </LinearLayout>
 

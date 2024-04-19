@@ -16,6 +16,9 @@
             android:name=".AdminAddItemsActivity"
             android:exported="false" />
         <activity
+            android:name=".AdminViewItemsActivity"
+            android:exported="false"/>
+        <activity
             android:name=".AdminAddUserActivity"
             android:exported="false" />
         <activity
