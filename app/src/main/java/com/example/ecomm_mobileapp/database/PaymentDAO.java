@@ -29,6 +29,9 @@ public interface PaymentDAO {
     @Query("DELETE FROM " + ShopDatabase.PAYMENT_TABLE)
     void deleteAll();
 
+    @Query("SELECT * FROM " + ShopDatabase.PAYMENT_TABLE + " WHERE userId = :userId")
+    LiveData<List<Payment>> getAllPaymentsByUserId(int userId);
+
 //    @Query("SELECT * FROM " + ShopDatabase.PAYMENT_TABLE + " WHERE paymentId = :paymentId")
 //    LiveData<Payment> getPaymentById(int paymentId);
 }
