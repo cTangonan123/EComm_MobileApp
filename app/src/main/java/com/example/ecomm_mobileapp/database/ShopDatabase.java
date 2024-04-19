@@ -87,7 +87,7 @@ public abstract class ShopDatabase extends RoomDatabase {
                 productDAO.insert(product2);
 
 
-// this is not working...perhaps alter POJO or DAO associated with entity declaration
+
                 CartDAO cartDAO = INSTANCE.cartDAO();
 
                 cartDAO.deleteAll();
@@ -98,6 +98,11 @@ public abstract class ShopDatabase extends RoomDatabase {
 
                 cartDAO.insert(cart1);
                 cartDAO.insert(cart2);
+
+                PaymentDAO paymentDAO = INSTANCE.paymentDAO();
+
+                Payment payment1 = new Payment("admin2", "admin2", "111", "1111111111111111", 1);
+                paymentDAO.insert(payment1);
 
                 OrderDAO orderDAO = INSTANCE.orderDAO();
                 orderDAO.deleteAll();

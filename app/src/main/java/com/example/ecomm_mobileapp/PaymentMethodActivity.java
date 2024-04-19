@@ -22,10 +22,11 @@ public class PaymentMethodActivity extends AppCompatActivity {
     private EditText cardNumberEditText;
     private EditText cardCVVEditText;
     private Button createPaymentMethod;
+    private Button btnBackToMain;
 
     private ShopRepository repository;
 
-    private int loggedInUserId = -1;
+    private int loggedInUserId = 1;
 
     private ActivityPaymentMethodBinding binding;
 
@@ -40,6 +41,7 @@ public class PaymentMethodActivity extends AppCompatActivity {
         cardNumberEditText = findViewById(R.id.editTextCardNumber);
         cardCVVEditText = findViewById(R.id.editTextCVV);
         createPaymentMethod = findViewById(R.id.buttonAddPaymentMethod);
+        btnBackToMain = findViewById(R.id.payment_button_back_to_main);
 
         repository = ShopRepository.getRepository(getApplication());
 
@@ -61,9 +63,16 @@ public class PaymentMethodActivity extends AppCompatActivity {
                     return;
                 }
 
-                savePaymentInfo(cardFirstName, cardLastName, cardNumber, loggedInUserId);
+                savePaymentInfo(cardFirstName, cardLastName, cardNumber, cardCVV, loggedInUserId);
 
                 Toast.makeText(PaymentMethodActivity.this, "Payment method added successfully", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnBackToMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(MainActivity.mainActivityIntentFactory(getApplicationContext(), loggedInUserId));
             }
         });
     }
@@ -71,15 +80,15 @@ public class PaymentMethodActivity extends AppCompatActivity {
     private boolean isValidCardNumber(String cardNumber, String cvv) {
         return cardNumber != null && cardNumber.length() == 16 && cvv != null && cvv.length() == 3;
     }
-    private void savePaymentInfo(String cardFirstName, String cardLastName, String cardNumber, int userId) {
-        Payment payment = new Payment(cardFirstName, cardLastName, cardNumber, loggedInUserId);
+    private void savePaymentInfo(String cardFirstName, String cardLastName, String cardNumber, String cardCVV, int userId) {
+        Payment payment = new Payment(cardFirstName, cardLastName, cardNumber, cardCVV, userId);
         repository.insertPayment(payment);
 
-        Intent paymentIntent = paymentMethodIntentFactory(getApplicationContext());
+        Intent paymentIntent = paymentMethodIntentFactory(getApplicationContext(), userId);
         startActivity(paymentIntent);
     }
 
-    static Intent paymentMethodIntentFactory(Context context) {
+    static Intent paymentMethodIntentFactory(Context context, int userId) {
         return new Intent(context, PaymentActivity.class);
     }
 }

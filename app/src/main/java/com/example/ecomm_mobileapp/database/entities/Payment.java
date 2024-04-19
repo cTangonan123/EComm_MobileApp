@@ -26,11 +26,12 @@ public class Payment {
     private String firstName;
     private String lastName;
 
-    public Payment(String firstName, String lastName,String cardNumber, int userId) {
+    public Payment(String firstName, String lastName, String cardNumber, String cardCVV, int userId) {
         this.userId = userId;
         this.cardNumber = cardNumber;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.cardCVV = cardCVV;
     }
 
     public int getId() {

@@ -114,9 +114,15 @@ public class ShopRepository {
         });
     }
 
-    public LiveData<List<Payment>> getAllPayments(int userId) {
-        return this.allPayments;
+    public LiveData<List<Payment>> getAllPaymentsByUserId(int userId) {
+        return paymentDAO.getAllPaymentsByUserId(userId);
     }
+
+    public LiveData<List<Payment>> getAllPaymentsByUserid(int userId) {
+        return paymentDAO.getAllPaymentsByUserId(userId);
+    }
+
+
 
     public void insertPayment(Payment... payment) {
         ShopDatabase.databaseWriteExecutor.execute(() -> {

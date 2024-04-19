@@ -39,12 +39,10 @@ public class PaymentActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_payment);
         binding = ActivityPaymentBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         repository = ShopRepository.getRepository(getApplication());
-
-
 
         shopViewModel = new ViewModelProvider(this).get(ShopViewModel.class);
 
@@ -56,6 +54,8 @@ public class PaymentActivity extends AppCompatActivity {
         shopViewModel.getAllPaymentsByUserId(loggedInUserId).observe(this, payment -> {
             adapter.submitList(payment);
         });
+
+
 
         binding.paymentButtonBackToMain.setOnClickListener(new View.OnClickListener() {
             @Override

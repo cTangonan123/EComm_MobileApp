@@ -51,7 +51,7 @@ public class ShopViewModel extends AndroidViewModel {
     }
 
     public LiveData<List<Payment>> getAllPaymentsByUserId(int userId) {
-        return repository.getAllPayments(userId);
+        return repository.getAllPaymentsByUserid(userId);
     }
     public void removecart(Cart cart) {repository.removeCartFromTable(cart);}
 
