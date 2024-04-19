@@ -36,9 +36,9 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String MAIN_ACTIVITY_USER_ID = "com.example.ecomm_mobileapp.MAIN_ACTIVITY_USER_ID";
+    private static final String ACTIVITIES_USER_ID = "com.example.ecomm_mobileapp.ACTIVITIES_USER_ID";
     private static final String SAVED_INSTANCE_STATE_USERID_KEY = "com.example.ecomm_mobileapp.SAVED_INSTANCE_USER_ID_KEY";
-    private static final int LOGGED_OUT = -1;
+    public static final int LOGGED_OUT = -1;
     private ActivityMainBinding binding;
     private ShopRepository repository;
     public static final String TAG = "CRT_SHOP";
@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
             loggedInUserId = savedInstanceState.getInt(SAVED_INSTANCE_STATE_USERID_KEY, LOGGED_OUT);
         }
         if (loggedInUserId == LOGGED_OUT) {
-            loggedInUserId = getIntent().getIntExtra(MAIN_ACTIVITY_USER_ID, LOGGED_OUT);
+            loggedInUserId = getIntent().getIntExtra(ACTIVITIES_USER_ID, LOGGED_OUT);
         }
         if (loggedInUserId == LOGGED_OUT) {
             return;
@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
     private void logout() {
         loggedInUserId = LOGGED_OUT;
         updateSharedPreference();
-        getIntent().putExtra(MAIN_ACTIVITY_USER_ID, LOGGED_OUT);
+        getIntent().putExtra(ACTIVITIES_USER_ID, LOGGED_OUT);
 
         startActivity(LoginActivity.loginIntentFactory(getApplicationContext(), loggedInUserId));
     }
@@ -179,9 +179,10 @@ public class MainActivity extends AppCompatActivity {
 
     static Intent mainActivityIntentFactory(Context context, int userId) {
         Intent intent = new Intent(context, MainActivity.class);
-        intent.putExtra(MAIN_ACTIVITY_USER_ID, userId);
+        intent.putExtra(ACTIVITIES_USER_ID, userId);
         return intent;
     }
 }
+
 
 
