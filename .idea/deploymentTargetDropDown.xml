@@ -2,6 +2,15 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="CartDAOTest">
+        <State />
+      </entry>
+      <entry key="PaymentDAOTest">
+        <State />
+      </entry>
+      <entry key="ProductDAOTest">
+        <State />
+      </entry>
       <entry key="UserDAOTest">
         <State />
       </entry>
