@@ -1,12 +1,5 @@
 package com.example.ecomm_mobileapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,15 +10,17 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.ecomm_mobileapp.database.ShopRepository;
-import com.example.ecomm_mobileapp.database.entities.Cart;
-import com.example.ecomm_mobileapp.database.entities.Payment;
 import com.example.ecomm_mobileapp.databinding.ActivityCheckoutBinding;
 import com.example.ecomm_mobileapp.viewHolders.CheckoutItemsAdapter;
 import com.example.ecomm_mobileapp.viewHolders.ShopViewModel;
-import com.example.ecomm_mobileapp.viewHolders.ViewCartViewAdapter;
 
-import java.util.List;
 import java.util.Locale;
 
 public class CheckoutActivity extends AppCompatActivity {
@@ -56,7 +51,6 @@ public class CheckoutActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         loginUser(savedInstanceState);
 
-
         repository = ShopRepository.getRepository(getApplication());
         shopViewModel = new ViewModelProvider(this).get(ShopViewModel.class);
 
@@ -85,20 +79,6 @@ public class CheckoutActivity extends AppCompatActivity {
             binding.checkoutTextTotalcost.setText(String.format(Locale.US, "Total: $%,.2f", total));
             adapter1.submitList(products);
         });
-
-//        LiveData<List<Payment>> paymentObserver = repository.getAllPaymentsByUserId(loggedInUserId);
-//        paymentObserver.observe(this, payments -> {
-//
-//            if (payments != null) {
-//
-//                if (payments.size() > 0) {
-//                    isPaymentMethodExist = true;
-//                    Log.i(MainActivity.TAG, String.valueOf(isPaymentMethodExist));
-//                }
-//            }
-//        });
-
-
 
         btnBackToStore.setOnClickListener(new View.OnClickListener() {
             @Override

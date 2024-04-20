@@ -1,29 +1,19 @@
 package com.example.ecomm_mobileapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ecomm_mobileapp.database.ShopRepository;
 import com.example.ecomm_mobileapp.database.UserDAO;
@@ -31,8 +21,6 @@ import com.example.ecomm_mobileapp.database.entities.User;
 import com.example.ecomm_mobileapp.databinding.ActivityMainBinding;
 import com.example.ecomm_mobileapp.viewHolders.ShopAdapter;
 import com.example.ecomm_mobileapp.viewHolders.ShopViewModel;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -129,13 +117,13 @@ public class MainActivity extends AppCompatActivity {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                logout();
 
                 Toast.makeText(MainActivity.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
 
                 Intent intent = LoginActivity.loginIntentFactory(MainActivity.this, loggedInUserId);
                 startActivity(intent);
                 finish();
+                logout();
             }
         });
 

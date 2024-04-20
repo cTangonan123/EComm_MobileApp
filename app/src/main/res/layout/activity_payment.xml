@@ -25,6 +25,14 @@
             android:textSize="30sp"
             android:textAlignment="textStart"
             />
+        <TextView
+            android:id="@+id/textViewUserName"
+            android:textColor="@color/color_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:layout_weight="1"
+            android:text="TextView" />
         <Button
             android:id="@+id/payment_header_logout_button"
             android:layout_width="50dp"

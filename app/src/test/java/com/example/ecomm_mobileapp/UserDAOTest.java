@@ -3,10 +3,11 @@ package com.example.ecomm_mobileapp;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
 import androidx.lifecycle.LiveData;
 import androidx.room.Room;
 import androidx.test.core.app.ApplicationProvider;
+import androidx.arch.core.executor.*;
+
 
 import com.example.ecomm_mobileapp.database.ShopDatabase;
 import com.example.ecomm_mobileapp.database.UserDAO;
