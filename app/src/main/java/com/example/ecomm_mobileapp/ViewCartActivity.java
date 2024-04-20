@@ -48,7 +48,6 @@ public class ViewCartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityViewCartBinding.inflate(getLayoutInflater());
-
         setContentView(binding.getRoot());
         loginUser(savedInstanceState); //
 

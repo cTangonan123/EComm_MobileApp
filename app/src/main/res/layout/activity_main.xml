@@ -28,7 +28,7 @@
             android:layout_width="60dp"
             android:layout_height="fill_parent"
             android:textColor="@color/color_white"
-            android:text="Store Name"
+            android:text="Amaz'n"
             android:textSize="30sp"
             android:textAlignment="textStart"
         />
