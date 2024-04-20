@@ -1,29 +1,26 @@
 package com.example.ecomm_mobileapp;
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
-import androidx.lifecycle.LiveData;
 import androidx.room.Room;
 import androidx.test.core.app.ApplicationProvider;
 
 import com.example.ecomm_mobileapp.database.ShopDatabase;
-import com.example.ecomm_mobileapp.database.UserDAO;
-import com.example.ecomm_mobileapp.database.entities.User;
+import com.example.ecomm_mobileapp.database.OrderDAO;
+import com.example.ecomm_mobileapp.database.entities.Order;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-
 import java.util.List;
 
-public class UserDAOTest {
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+public class OrderDAOTest {
     private ShopDatabase database;
-    private UserDAO userDAO;
+    private OrderDAO orderDAO;
 
     @Rule
     public InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
@@ -36,7 +33,7 @@ public class UserDAOTest {
                 .allowMainThreadQueries()
                 .build();
 
-        userDAO = database.userDAO();
+        orderDAO = database.orderDAO();
     }
 
     @After
@@ -45,11 +42,17 @@ public class UserDAOTest {
     }
 
     @Test
-    public void deleteUser() {
-        User user = new User("testUser", "password", false, "Chase", "Power");
-        userDAO.insert(user);
+    public void deleteOrder() throws InterruptedException {
+        Order order = new Order(100.0);
+        orderDAO.insert(order);
 
-        userDAO.delete(user);
-        User deletedUser = userDAO.getUserByUserId(user.getId()).getValue();
+        // Delete the order
+        orderDAO.delete(order);
+
+        List<Order> orders = LiveDataTestUtil.getValue(orderDAO.getAllOrders());
+
+
+        assertFalse(orders.isEmpty());
     }
+
 }
