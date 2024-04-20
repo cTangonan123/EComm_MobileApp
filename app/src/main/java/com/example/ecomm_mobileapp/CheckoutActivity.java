@@ -40,7 +40,7 @@ public class CheckoutActivity extends AppCompatActivity {
     private ShopViewModel shopViewModel;
 
     private Button btnBackToStore;
-    private Button btnSelectPayment;
+    private Button btnCheckout;
     private Button btnLogout;
     private TextView usernameTextView;
 
@@ -61,7 +61,7 @@ public class CheckoutActivity extends AppCompatActivity {
         shopViewModel = new ViewModelProvider(this).get(ShopViewModel.class);
 
         btnBackToStore = binding.backToStoreButton;
-        btnSelectPayment = binding.selectPaymentButton;
+        btnCheckout = binding.buttonCheckout;
         btnLogout = binding.checkoutHeaderLogoutButton;
         usernameTextView = findViewById(R.id.textViewUserName);
 
@@ -107,13 +107,15 @@ public class CheckoutActivity extends AppCompatActivity {
             }
         });
 
-        btnSelectPayment.setOnClickListener(new View.OnClickListener() {
+        btnCheckout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // TODO: Create a method which places an order
                 // TODO: Fix Order and OrderDAO in order to take in multiple Carts.
-                Toast.makeText(CheckoutActivity.this, "You clicked the Select Payment Button", Toast.LENGTH_SHORT).show();
-                validateUserPaymentInfo();
+//                Toast.makeText(CheckoutActivity.this, "You clicked the Select Payment Button", Toast.LENGTH_SHORT).show();
+//                validateUserPaymentInfo();
+                repository.deleteAllCartsByUserId(loggedInUserId);
+                startActivity(MainActivity.mainActivityIntentFactory(getApplicationContext(), loggedInUserId));
             }
         });
         btnLogout.setOnClickListener(new View.OnClickListener() {

@@ -114,6 +114,12 @@ public class ShopRepository {
         });
     }
 
+    public void deleteAllCartsByUserId(int userId) {
+        ShopDatabase.databaseWriteExecutor.execute(() -> {
+            cartDAO.deleteAllCartsByUserId(userId);
+        });
+    }
+
     public LiveData<List<Payment>> getAllPaymentsByUserId(int userId) {
         return paymentDAO.getAllPaymentsByUserId(userId);
     }

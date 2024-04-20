@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ecomm_mobileapp.database.entities.Order;
 import com.example.ecomm_mobileapp.database.entities.Payment;
 import com.example.ecomm_mobileapp.databinding.ActivityPaymentBinding;
 import com.example.ecomm_mobileapp.database.ShopRepository;
@@ -74,6 +75,7 @@ public class PaymentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(CheckoutActivity.checkoutActivityIntentFactory(getApplicationContext(), loggedInUserId));
+
             }
         });
     }

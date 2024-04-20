@@ -24,6 +24,9 @@ public interface CartDAO {
     @Delete
     void delete(Cart cart);
 
+    @Query("DELETE FROM " + ShopDatabase.CART_TABLE + " WHERE userId = :userId")
+    void deleteAllCartsByUserId(int userId);
+
     @Query("SELECT * FROM " + ShopDatabase.CART_TABLE)
     LiveData<List<Cart>> getAllCart();
 
