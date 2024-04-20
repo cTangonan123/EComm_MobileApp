@@ -18,7 +18,7 @@ import com.example.ecomm_mobileapp.database.ShopDatabase;
 import com.example.ecomm_mobileapp.database.ShopRepository;
 import com.example.ecomm_mobileapp.database.entities.User;
 
-public class CreateNewUserActivity extends AppCompatActivity {
+public class tesCreateNewUserActivity extends AppCompatActivity {
 
     private EditText userNameEditText;
     private EditText passwordEditText1;

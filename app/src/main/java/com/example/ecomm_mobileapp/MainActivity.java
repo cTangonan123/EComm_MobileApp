@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        //Log.i(MainActivity.TAG, "Hello World");
+        // Log.i(MainActivity.TAG, "Hello World");
 
         repository = ShopRepository.getRepository(getApplication());
         loginUser(savedInstanceState);
