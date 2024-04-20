@@ -6,6 +6,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.ecomm_mobileapp.database.entities.Product;
 
@@ -24,6 +25,9 @@ public interface ProductDAO {
 
 //    @Query("SELECT * FROM " + ShopDatabase.PRODUCT_TABLE + " WHERE id = :productId")
 //    LiveData<Product> getProductByProductId(int productId);
+
+    @Update
+    void updateCurrentUser(Product product);
 
     @Query("SELECT * FROM " + ShopDatabase.PRODUCT_TABLE + " WHERE id = :productId")
     LiveData<Product> getProductById(int productId);
