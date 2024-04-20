@@ -1,12 +1,8 @@
 package com.example.ecomm_mobileapp;
 
-import static com.example.ecomm_mobileapp.database.ShopRepository.repository;
-
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,11 +10,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ecomm_mobileapp.database.ShopDatabase;
 import com.example.ecomm_mobileapp.database.ShopRepository;
 import com.example.ecomm_mobileapp.database.entities.User;
 
-public class tesCreateNewUserActivity extends AppCompatActivity {
+public class CreateNewUserActivity extends AppCompatActivity {
 
     private EditText userNameEditText;
     private EditText passwordEditText1;
