@@ -6,6 +6,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.ecomm_mobileapp.database.entities.User;
 
@@ -18,6 +19,9 @@ public interface UserDAO {
 
     @Delete
     void delete(User user);
+
+    @Update
+    void update(User user);
 
     @Query("DELETE FROM " + ShopDatabase.USER_TABLE)
     void deleteAll();
