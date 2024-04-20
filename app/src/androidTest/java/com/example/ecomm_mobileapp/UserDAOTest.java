@@ -1,21 +1,28 @@
 package com.example.ecomm_mobileapp;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
 import androidx.lifecycle.LiveData;
+
 import androidx.room.Room;
 import androidx.test.core.app.ApplicationProvider;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import com.example.ecomm_mobileapp.database.ShopDatabase;
 import com.example.ecomm_mobileapp.database.UserDAO;
 import com.example.ecomm_mobileapp.database.entities.User;
 
-import org.junit.After;
-import org.junit.Before;
+
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
+
 import org.junit.Rule;
-import org.junit.Test;
+
+
 
 public class UserDAOTest {
     private ShopDatabase database;
@@ -42,11 +49,16 @@ public class UserDAOTest {
 
     @Test
     public void insertUser() {
+        // Arrange
         User user = new User("testUser", "password", false, "Chase", "Power");
+
+        // Act
         userDAO.insert(user);
 
+        // Assert
         LiveData<User> retrievedUserLiveData = userDAO.getUserByUserId(user.getId());
         User retrievedUser = retrievedUserLiveData.getValue();
+        assertNotNull(retrievedUser);
         assertEquals(user, retrievedUser);
     }
 
@@ -63,9 +75,9 @@ public class UserDAOTest {
         // Retrieve the updated user from the database
         LiveData<User> updatedUserLiveData = userDAO.getUserByUserId(user.getId());
         User updatedUser = updatedUserLiveData.getValue();
+        assertNotNull(updatedUser);
         assertEquals("Jane", updatedUser.getFirstName());
     }
-
 
     @Test
     public void deleteUser() {
